@@ -25,6 +25,7 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
+// Creating new account/user
 router.post('/', async (req, res) => {
 	try {
 		const userData = await User.create({
@@ -80,8 +81,8 @@ router.post('/login', async (req, res) => {
 		req.session.user = {
 			id: foundUser.id,
 			username: foundUser.username,
-			email: foundUser.email,
-			password: foundUser.password,
+			// email: foundUser.email,
+			// password: foundUser.password,
 			// loggedIn: false,
 		};
 

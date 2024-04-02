@@ -1,11 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const { User, Post, Comment } = require('../../models');
+const dayjs = require('dayjs');
 
 router.get('/', async (req, res) => {
 	try {
 		const postData = await Post.findAll();
-		res.status(200).json(postData);
+
+		const allPosts = postData.map((post) => post.toJSON());
+		// console.log(allPosts);
+
+		for (let i = 0; i < allPosts.length; i++) {
+			allPosts[i].createdAt = dayjs(allPosts.createdAt).format('M/D/YY');
+		}
+
+		res.status(200).json(allPosts);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json(error);
