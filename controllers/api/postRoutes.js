@@ -1,11 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const { User, Post, Comment } = require('../../models');
+const dayjs = require('dayjs');
 
 router.get('/', async (req, res) => {
 	try {
 		const postData = await Post.findAll();
-		res.status(200).json(postData);
+
+		const allPosts = postData.map((post) => post.toJSON());
+		// console.log(allPosts);
+
+		for (let i = 0; i < allPosts.length; i++) {
+			allPosts[i].createdAt = dayjs(allPosts.createdAt).format('M/D/YY');
+		}
+
+		res.status(200).json(allPosts);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json(error);
@@ -22,16 +31,41 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
+// Create new post
 router.post('/', async (req, res) => {
+	if (!req.session.user) {
+		return res.status(403).json({ msg: 'login first!' });
+	}
 	try {
 		const postData = await Post.create({
-			// email: req.body.email,
-			// username: req.body.username,
-			// password: req.body.password,
 			content: req.body.content,
 			userId: req.session.user.id,
 		});
 		res.status(201).json(postData);
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ msg: 'error occurred', error });
+	}
+});
+
+// Delete post
+router.delete('/:id', async (req, res) => {
+	if (!req.session.user) {
+		return res.status(403).json({ msg: 'login first!' });
+	}
+	try {
+		const postData = await Post.destroy({
+			where: {
+				id: req.params.id,
+				userId: req.session.user.id,
+			},
+		});
+		if (postData === 0) {
+			return res
+				.status(404)
+				.json({ msg: 'no such Post exists or its not yours' });
+		}
+		res.json(postData);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({ msg: 'error occurred', error });
