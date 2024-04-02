@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comment extends Model {}
+class Tag extends Model {}
 
-Comment.init(
+Tag.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -21,8 +21,8 @@ Comment.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comment',
+    modelName: 'tag',
   }
 );
 
-module.exports = Comment;
+module.exports = Tag;
