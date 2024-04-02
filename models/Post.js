@@ -15,11 +15,11 @@ Post.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		date: {
-			type: DataTypes.DATE,
-			allowNull: false,
-			defaultValue: DataTypes.NOW,
-		},
+		// date: {
+		// 	type: DataTypes.DATE,
+		// 	allowNull: false,
+		// 	defaultValue: DataTypes.NOW,
+		// },
 	},
 	{
 		sequelize,

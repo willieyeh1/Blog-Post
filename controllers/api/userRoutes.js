@@ -33,13 +33,13 @@ router.post('/', async (req, res) => {
 			password: req.body.password,
 		});
 
-		req.session.save(() => {
-			req.session.loggedIn = true;
-			req.session.user = {
-				id: userData.id,
-				name: userData.username,
-			};
-		});
+		req.session.user = {
+			id: userData.id,
+			username: userData.username,
+		};
+
+		req.session.loggedIn = true;
+
 		res.status(201).json(userData);
 	} catch (error) {
 		console.log(error);
@@ -104,5 +104,28 @@ router.post('/logout', (req, res) => {
 		res.status(404).end();
 	}
 });
+
+// router.delete('/:id', async (req, res) => {
+// 	if (!req.session.user) {
+// 		return res.status(403).json({ msg: 'login first!' });
+// 	}
+// 	try {
+// 		const userData = await User.destroy({
+// 			where: {
+// 				id: req.params.id,
+// 				userId: req.session.user.id,
+// 			},
+// 		});
+// 		if (postData === 0) {
+// 			return res
+// 				.status(404)
+// 				.json({ msg: 'no such Post exists or its not yours' });
+// 		}
+// 		res.json(postData);
+// 	} catch (error) {
+// 		console.log(error);
+// 		res.status(500).json({ msg: 'error occurred', error });
+// 	}
+// });
 
 module.exports = router;
