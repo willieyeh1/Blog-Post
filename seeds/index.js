@@ -4,22 +4,22 @@ const {User, Post , Comment} = require("../models");
 
 const userSeeds = [
   {
-    username: "Eric Lee",
+    username: "Eric",
     email: "e@gmail.com",
     password: "password"
   },
   {
-    username: "Willie Yeh",
+    username: "Willie",
     email: "w@gmail.com",
     password: "password"
   },
   {
-    username: "Kyle Yee",
+    username: "Kyle",
     email: "k@gmail.com",
     password: "password"
   },
   {
-    username: "Jordan Aplon",
+    username: "Jordan",
     email: "j@gmail.com",
     password: "password"
   },
@@ -27,7 +27,8 @@ const userSeeds = [
 
 const postSeeds = [
   {
-    content: "Dogs can't operate MRI machines. But catscan.",
+    content: "Dogs can't operate MRI machines.",
+    punchline: "But catscan.",
     userId: 1
   },
   {

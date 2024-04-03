@@ -1,11 +1,13 @@
 .nav{
-    margin-left: 69%;
+    /* margin-left: 69%; */
     /* margin-top: 100px; */
+    
     font-size: 30px
 }
 .headers{
-    background: rgb(255,215,59);
-background: linear-gradient(0deg, rgba(255,215,59,1) 0%, rgba(255,35,35,0.8225665266106442) 100%);
+    /* background: rgb(255,215,59);
+    background: linear-gradient(0deg, rgba(255,215,59,1) 0%, rgba(255,35,35,0.8225665266106442) 100%); */
+    border-bottom: 2px solid rgb(189, 189, 189);
 }
 
 .navbar-brand{
@@ -14,8 +16,27 @@ background: linear-gradient(0deg, rgba(255,215,59,1) 0%, rgba(255,35,35,0.822566
 .navbar-nav{
     text-align: center;
 }
-#margin{
+/* #margin{
     margin-top: 50px;
     margin-bottom: 50px
+} */
+
+#navbarNav {
+    display: flex;
+    justify-content: flex-end;
 }
 
+#navbarlinks a, #navbarlinks button {
+    padding: 1rem;
+    color: white;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to right top, #026796, #21699c, #346aa2, #456ba7, #556cab, #666cae, #776cb0, #876cb1, #9c6cb0, #b06bad, #c26ba8, #d36ba1);
+}
+
+.setupinput, .punchlineinput {
+    background-color: #ffffff2d;
+}
