@@ -154,4 +154,12 @@ main {
 }
 .new-joke-text {
     padding: 15px;
-    color: white}
+    color: white
+}
+
+.signup-link{
+    margin-top: 1rem;
+}
+.signup-link a{
+    color: aliceblue;
+}
