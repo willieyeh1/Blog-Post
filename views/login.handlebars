@@ -6,10 +6,12 @@
     <input type="password" name="passwordInput" id="passwordInput">
     <input type="submit" id="login-btn" value="Log In">
 </form> --}}
- <div class="centered-container">
-        <div>
-            <div class="containers">
-                <h2>Login</h2>
+ <div class="container d-flex justify-content-center">
+        {{!-- <div>
+            <div class="containers"> --}}
+                <div id="login-container">
+
+                <h1 id="login-title">Login</h1>
                 <form class="login-form">
                     <div class="form-group">
                         <label for="usernameInput">Username:</label>
@@ -23,8 +25,9 @@
                         <input id="login-btn" type="submit" value="Login">
                     </div>
                 </form>
-            </div>
-        </div>
+                </div>
+            {{!-- </div>
+        </div> --}}
 
 
 <script src="/js/login.js"></script>

@@ -18,58 +18,80 @@
 
 <body>
 
- <header class="headers">
+  <header class="headers">
     <nav class="navbar navbar-expand-lg bg-body-tertiary-salmon" id="navs">
-        <div class="container-fluid" id= "margin">
-          <div class="navbar-brand"><img src="/images/logo.png" width="288px" height="100px" alt="logo of the DJ R Us"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="hamburgers">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse yolo" id="navbarNav">
-            <ul class="navbar-nav" id="navbarlinks">
-              <li class="nav-item">
-                <a class="nav-link" href="/addjoke">Add Joke</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
-              </li>
-              {{#if loggedIn}}
-              <li class="nav-item">
-                <button class="nav-link" id="logout-btn">Logout</button>
-              </li>
-              {{else}}
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-              {{/if}}
-            </ul>
-          </div>
+      <div class="container-fluid" id="margin">
+        <div class="navbar-brand"><img src="/images/logo.png" width="288px" height="100px" alt="logo of the DJ R Us">
         </div>
-      </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="hamburgers">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse yolo" id="navbarNav">
+          <ul class="navbar-nav" id="navbarlinks">
+            <li class="nav-item">
+              <a class="nav-link" href="/addjoke">Add Joke</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+            {{#if loggedIn}}
+            <li class="nav-item">
+              <button class="nav-link" id="logout-btn">Logout</button>
+            </li>
+            {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main>
     {{{body}}}
   </main>
 
-<footer class="footer">
+
+
+<footer id="footer">
+  <div class="footer-container">
+    <div id="footer-content">
+      Made by Eric, Willie, Kyle, Jordan
+    </div>
+    <div id="footer-content">
+      &copy; 2024 DJ R Us
+    </div>
+    <div id="footer-content">
+      Github icon here
+    </div>
+
+  </div>
+</footer>
+
+
+  {{!-- <footer class="footer">
     <div class="footer-leftcontent">
       Copyright-DJ-R-US <br>
-          Made by Eric, Willie, Kyle, Jordan
-          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        </div>
+      Made by Eric, Willie, Kyle, Jordan
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    </div>
     <div class="footer-rightcontent">
-      
+
       <a href="https://github.com/ericeya/DJ-R-Us">Github Repo</a>
     </div>
-    </footer>
+  </footer> --}}
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    {{#if loggedIn}}
-    <script src="/js/logout.js"></script>
-    {{/if}}
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
