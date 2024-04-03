@@ -33,26 +33,32 @@ const postSeeds = [
   },
   {
     content: "I wondered why the frisbee kept getting bigger and bigger. Then it hit me.",
+    punchline: "Then it hit me.",
     userId: 2
   },
   {
     content: "Why did the coach go to the bank? To get his quarterback.",
+    punchline: "To get his quarterback.",
     userId: 3
   },
   {
-    content: "Singing in the shower is fun until you get soap in your mouth. Then it's a soap opera.",
+    content: "Singing in the shower is fun until you get soap in your mouth.",
+    punchline: "Then it's a soap opera.",
     userId: 4
   },
   {
-    content: "Where do fruits go on vacation? Pear-is.",
+    content: "Where do fruits go on vacation?",
+    punchline: "Pear-is.",
     userId: 3
   },
   {
-    content: "Every time I take my dog to the park, the ducks try to bite him. That's what I get for buying a pure bread dog.",
+    content: "Every time I take my dog to the park, the ducks try to bite him.",
+    punchline: "That's what I get for buying a pure bread dog.",
     userId: 2
   },
   {
-    content: "Why did the gym close down? It just didn't work out.",
+    content: "Why did the gym close down?",
+    punchline: "It just didn't work out.",
     userId: 1
   },
   
