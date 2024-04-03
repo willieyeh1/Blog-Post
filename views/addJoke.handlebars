@@ -1,34 +1,26 @@
 <div class="container">
-    <div class="row">
-      <div class="col-6 text-center" id="jokeFormHeader">
-        <p class="new-joke-text">New Joke Form!</p>
-      </div>
-      <!-- <div class="col-6" id="blog-post-card-post">
-        <p></p>
-      </div> -->
-      <form class="col-12 joke-form" id="newJokeCard">
-      
-        <div class="pb-3" style="padding-left: 0; padding-right: 0">
-          <label for="setupInput" class="form-label text-white mt-3 mx-3">Joke Setup</label>
-          <input type="text" class="form-control mx-3 setupinput" style="width:97%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);"
-
-            placeholder="What did one eye say to the other eye?">
-        </div>
-
-        <label for="blogcontent" class="form-label text-white mx-3">Punchline</label>
-        <textarea id="blogcontent" class="form-control mx-3 mb-3 punchlineinput" style="width:97%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" aria-describedby="passwordHelpBlock"
-          placeholder="Between you and me man, something smells.."></textarea>
-
-        <!-- <div id="passwordHelpBlock" class="form-text text-white mx-3 mb-4"> </div> -->
-
-        <div class="d-flex justify-content-center">
-          <input type="submit" value="Create New Joke!" class="btn" id="login-btn" type="button"></input>
-          <!-- <input type="hidden" value="{{user.id}}" id="userid"></input> -->
-        </div>
-        <!-- <div class="col-12 mx-3 mb-3">
-          <a href="/createacct" id="sign-up-instead">Sign Up Instead</a>
-  
-        </div> -->
-      </form>
+  <div class="row justify-content-center">
+    <div class="col-6 text-center" id="jokeFormHeader">
+      <p class="new-joke-text fs-1">New Joke Form!</p>
     </div>
+
+    <form class="col-12 joke-form form-group" id="newJokeCard">
+      {{!-- <div class="pb-3" style="padding-left: 0; padding-right: 0"> --}}
+        <label for="setupInput" class="form-label mt-3">Joke Setup</label>
+        <input type="text" class="form-control setupinput" placeholder="What did one eye say to the other eye?">
+        {{!--
+      </div> --}}
+
+      <label for="blogcontent" class="form-label">Punchline</label>
+      <textarea id="blogcontent" class="form-control mb-3 punchlineinput" aria-describedby="passwordHelpBlock"
+        placeholder="Between you and me man, something smells.."></textarea>
+
+
+      {{!-- <div class="d-flex justify-content-center"> --}}
+        <input type="submit" value="Create New Joke!" class="btn btn-lg" id="submits" type="button"
+          style="color:white"></input>
+      {{!-- </div> --}}
+    </form>
+
   </div>
+</div>
