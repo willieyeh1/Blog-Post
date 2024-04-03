@@ -40,3 +40,53 @@ body {
 .setupinput, .punchlineinput {
     background-color: #ffffff2d;
 }
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 2px solid rgb(189, 189, 189)
+}
+
+.footer-leftcontent{
+padding-left: 30rem;
+text-align: center;
+}
+
+.footer-rightcontent{
+padding-right: 40rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color:  aliceblue;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc77;
+    border-radius: 5px;
+    box-sizing: border-box;
+    opacity: 15%;
+}
+/* .form-group input[type="submit"] {
+    background-color: rgb(238, 219, 0);
+    color: #fff;
+    cursor: pointer;
+    color:  aliceblue;
+} */
+
+#submitbutton {
+    font-weight: bold;
+    color: black;
+}
+#red {
+    color: red;
+}
+#id{
+    
+}
