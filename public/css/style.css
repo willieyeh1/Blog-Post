@@ -154,3 +154,10 @@ padding-right: 40rem;
 .new-joke-text {
     padding: 10px;
 }
+
+.signup-link{
+    margin-top: 1rem;
+}
+.signup-link a{
+    color: aliceblue;
+}
