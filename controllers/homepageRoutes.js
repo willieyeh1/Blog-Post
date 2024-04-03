@@ -1,12 +1,40 @@
 const express = require('express');
 const router = express.Router();
 const withAuth = require('../utils/auth')
+const { Comment, Post, User  } = require('../models');
+const dayjs = require('dayjs')
 
 // Get method
-router.get('/', (req, res) => {
-	res.render('home', {
-		loggedIn: req.session.loggedIn
-	})
+router.get('/', async (req, res) => {
+	try {
+		const dadjokeData = await Post.findAll({
+		  include: [User, {
+			model: User,
+			as: 'likes'
+		  }, {
+			model: User,
+			as: 'saves'
+		  }]
+		})
+		const dadjokes = dadjokeData.map((jokes) =>
+		jokes.toJSON()
+		);
+		for (let i = 0; i < dadjokes.length; i++) {
+		  dadjokes[i].createdAt = dayjs(dadjokes[i].createdAt).format("M/D/YYYY")
+		  const likecount = await dadjokeData[i].countLikes()
+		  dadjokes[i].likecounter = likecount
+		}
+		
+	
+		console.log(dadjokes)
+		res.render('home', {
+		  dadjokes,
+		  loggedIn: req.session.loggedIn,
+		})
+	  } catch (err) {
+		console.log(err);
+		res.status(500).json(err)
+	  }
 }
 )
 

@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0
+}
+
 .nav {
     /* margin-left: 69%; */
     /* margin-top: 100px; */
@@ -12,7 +18,7 @@
 }
 
 .navbar-brand {
-    font-size: 50px;
+    /* font-size: 50px; */
 }
 
 .navbar-nav {
@@ -39,12 +45,17 @@ body {
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(to right top, #026796, #21699c, #346aa2, #456ba7, #556cab, #666cae, #776cb0, #876cb1, #9c6cb0, #b06bad, #c26ba8, #d36ba1);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .setupinput,
 .punchlineinput {
-    background-color: rgba(255, 255, 255, 0.1);
-    ;
+    background-color: rgb(245, 245, 245);
+}
+
+::placeholder {
+    color: rgba(240, 248, 255, 0.5)
 }
 
 footer {
@@ -96,11 +107,13 @@ main {
 
 .form-group label {
     display: block;
-    font-weight: bold;
+    font-weight: 500;
     color: aliceblue;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
 }
 
-.form-group input {
+.form-group input, .form-group textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #cccccc77;
@@ -108,6 +121,25 @@ main {
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.1);
     color: aliceblue;
+}
+
+#show-punchline {
+    width: 90%;
+    padding: 0.4rem;
+    border: 2px solid #cccccc77;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: rgba(114, 129, 255, 0.2);
+    color: aliceblue;
+}
+
+
+#show-punchline:hover {
+    background: rgba(114, 129, 255, 0.5);
+}
+
+#show-punchline:active {
+    background: rgba(114, 129, 255, 0.7);
 }
 
 .form-group input[type="submit"] {
@@ -129,7 +161,11 @@ main {
 }
 
 #submits {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+}
+
+#submits:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 #login-title {
@@ -161,5 +197,58 @@ main {
     margin-top: 1rem;
 }
 .signup-link a{
+    color: aliceblue;
+}
+
+.container-joke-card {
+    border: 2px solid aliceblue;
+    border-radius: 10px;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container-joke-card > div  {
+    padding: 1rem 2rem 1rem 2rem;
+    font-size: 1.3rem;
+    color:aliceblue;
+}
+
+
+
+#joke-card-header {
+    border-bottom: 2px solid aliceblue;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#authorname, #postdate {
+    padding: 0 1rem 0 1rem;
+}
+
+#joke-card-footer {
+    border-top: 2px solid aliceblue;
+    padding-top: 0;
+}
+
+#row-count-likes {
+    padding-top: 0;
+}
+
+#joke-card-footer2 {
+    display: flex;
+    flex-direction: row;
+    
+}
+#bookmark-btn {
+    text-align: right;
+}
+
+#joke-card-footer i {
+    margin-top: 1rem;
+}
+
+#like-button, #comment-button, #bookmark-btn {
+    cursor: pointer;
+    font-size: 2rem;
     color: aliceblue;
 }
