@@ -17,23 +17,23 @@ User.hasMany(Post)
 User.hasMany(Comment)
 
 User.belongsToMany(Post, {
-    through: "likes",
-    as: "UsersLikes"
+    through: "UserLikes",
+    as: "likes"
 })
 
 Post.belongsToMany(User, {
-    through: "likes",
-    as: "UsersLikes"
+    through: "UserLikes",
+    as: "likes"
 })
 
 User.belongsToMany(Post, {
-    through: "saves",
-    as: "UsersSaves"
+    through: "UserSaves",
+    as: "saves"
 })
 
 Post.belongsToMany(User, {
-    through: "saves",
-    as: "UsersSaves"
+    through: "UserSaves",
+    as: "saves"
 })
 
 
