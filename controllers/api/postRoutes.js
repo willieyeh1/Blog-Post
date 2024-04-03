@@ -23,7 +23,15 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 	try {
-		const postData = await Post.findByPk(req.params.id);
+		const postData = await Post.findByPk(req.params.id, {
+			include: [ User , {
+				model: User,
+				as: 'likes'
+			}, {
+				model: User,
+				as: 'saves'
+			}]
+		});
 		res.status(200).json(postData);
 	} catch (error) {
 		console.log(error);
@@ -72,15 +80,28 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 
-// router.put('/:postId/user/:userId', async (req, res) => {
-// 	try {
-// 		const data = await Post.findByPk(req.params.postId)
-// 		await data.addUser(req.params.userId)
-// 		res.json({ msg: "User's like added" })
-// 	} catch (err) {
-// 		console.log(err)
-// 		res.status(500).json({ msg: 'error occurred', err })
-// 	}
-// })
+router.put('/:postId/user/:userId', async (req, res) => {
+	try {
+		const data = await Post.findByPk(req.params.postId)
+		await data.addLike(req.params.userId)
+		const count = await data.countLikes()
+		console.log(count)
+		res.json({ msg: "User's like added" })
+	} catch (err) {
+		console.log(err)
+		res.status(500).json({ msg: 'error occurred', err })
+	}
+})
+
+router.delete('/:postId/user/:userId', async (req, res) => {
+	try {
+		const data = await Post.findByPk(req.params.postId)
+		await data.removeLike(req.params.userId)
+		res.json({ msg: "User's has unliked the post" })
+	} catch (err) {
+		console.log(err)
+		res.status(500).json({ msg: 'error occurred', err })
+	}
+})
 
 module.exports = router;

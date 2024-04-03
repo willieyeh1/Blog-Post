@@ -144,6 +144,11 @@ const seedMe = async () => {
     console.table(userData.map((ud) => ud.toJSON()));
     console.table(postData.map((pd) => pd.toJSON()));
     console.table(commentData.map((cd) => cd.toJSON()));
+
+    await userData[0].addLike(1)
+    await userData[2].addSave(1)
+
+
     process.exit(0);
   } catch (err) {
     console.log(err);
