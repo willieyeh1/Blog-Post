@@ -38,7 +38,7 @@ body {
 }
 
 .setupinput, .punchlineinput {
-    background-color: #ffffff2d;
+    background-color: rgba(255, 255, 255, 0.1);;
 }
 
 .footer{
@@ -59,6 +59,12 @@ text-align: center;
 .footer-rightcontent{
 padding-right: 40rem;
 }
+.login-form{
+    width: 60%;
+    
+    justify-content: center;
+    align-items: center;
+  }
 
 .form-group label {
     display: block;
@@ -71,15 +77,20 @@ padding-right: 40rem;
     border: 1px solid #cccccc77;
     border-radius: 5px;
     box-sizing: border-box;
-    opacity: 15%;
+    background: rgba(255, 255, 255, 0.1);
+    color: aliceblue;
 }
-/* .form-group input[type="submit"] {
-    background-color: rgb(238, 219, 0);
+.form-group input[type="submit"] {
+    background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
     cursor: pointer;
     color:  aliceblue;
-} */
-
+    
+}
+.containers{
+    width: 60%;
+    margin: auto;
+}
 #submitbutton {
     font-weight: bold;
     color: black;
@@ -87,6 +98,7 @@ padding-right: 40rem;
 #red {
     color: red;
 }
-#id{
-    
+#submits{
+    margin-top: 1rem;
 }
+
