@@ -1,7 +1,6 @@
 const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment')
-const Tag = require('./Tag')
 
 Post.hasMany(Comment, {
     onDelete: "CASCADE"
@@ -37,16 +36,6 @@ Post.belongsToMany(User, {
     as: "UsersSaves"
 })
 
-Post.belongsToMany(Tag, {
-    through: "posttag",
-    as: "PostTags"
-})
-
-Tag.belongsToMany(Post, {
-    through: "posttag",
-    as: "PostTags"
-})
 
 
-
-module.exports = { User, Post, Comment, Tag };
+module.exports = { User, Post, Comment};
