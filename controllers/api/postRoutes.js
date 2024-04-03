@@ -72,4 +72,15 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 
+// router.put('/:postId/user/:userId', async (req, res) => {
+// 	try {
+// 		const data = await Post.findByPk(req.params.postId)
+// 		await data.addUser(req.params.userId)
+// 		res.json({ msg: "User's like added" })
+// 	} catch (err) {
+// 		console.log(err)
+// 		res.status(500).json({ msg: 'error occurred', err })
+// 	}
+// })
+
 module.exports = router;
