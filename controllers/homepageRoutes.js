@@ -3,9 +3,22 @@ const router = express.Router();
 const withAuth = require('../utils/auth');
 const { Comment, Post, User } = require('../models');
 const dayjs = require('dayjs');
+const axios = require('axios');
 
 // Get method
 router.get('/', async (req, res) => {
+	axios({
+		method: 'get',
+		url: 'https://icanhazdadjoke.com/',
+		headers: { Accept: 'application/json' },
+	})
+		.then(function (response) {
+			console.log(response.data);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+
 	try {
 		const dadjokeData = await Post.findAll({
 			include: [
