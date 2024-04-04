@@ -33,25 +33,35 @@ router.get('/', async (req, res) => {
 					model: User,
 					as: 'saves',
 				},
+				{
+					model: Comment,
+					include: [User],
+					attribute: ['date']
+				},
 			],
 			order: [['id', 'DESC']],
 		});
-		const commentData = await Comment.findAll({
-			include: [Post, User]
-		});
-		const comments = commentData.map((comment) => comment.toJSON())
+		// const commentData = await Comment.findAll({
+		// 	include: [Post, User]
+		// });
+		// const comments = commentData.map((comment) => comment.toJSON())
 
 		const dadjokes = dadjokeData.map((jokes) => jokes.toJSON());
 		for (let i = 0; i < dadjokes.length; i++) {
-			dadjokes[i].createdAt = dayjs(dadjokes[i].createdAt).format('M/D/YYYY');
+			dadjokes[i].createdAt = dayjs(dadjokes[i].createdAt).format('M/D/YY');
 			const likecount = await dadjokeData[i].countLikes();
 			dadjokes[i].likecounter = likecount;
-			for (let j = 0; j < comments.length; j++) {
-				if (comments[j].post.id === dadjokes[i].id) {
-					dadjokes[i].comment[j] = comments.content
-					// dadjokes.comments.push(comments[j].content)
-				}				
+			if (dadjokes[i].comments.length > 0) {
+				for (let j = 0; j < dadjokes[i].comments.length; j++) {
+					dadjokes[i].comments[j].createdAt = dayjs(dadjokes[i].comments[j].createdAt).format('M/D/YY');
+				}
 			}
+			
+			// for (let j = 0; j < comments.length; j++) {
+			// 	if (comments[j].post.id === dadjokes[i].id) {
+			// 		dadjokes[i].comment[j] = comments.content
+			// 	}				
+			// }
 		}
 
 		
@@ -81,14 +91,13 @@ router.get('/', async (req, res) => {
 
 		
 		// console.log(dadjokes);
-		console.log(comments)
+		console.log(dadjokes)
 
 		// console.log(jokeOftheDay)
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
 			jotd,
-			comments,
 			layout: 'main2'
 		});
 	} catch (err) {
