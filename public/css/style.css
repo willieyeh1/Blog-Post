@@ -316,11 +316,63 @@ main {
 }
 
 .post-btns,
-.bookmark-btn {
+.bookmark-btn,
+.comment-btn{
 	background: none;
 	border: none;
 }
 
 #joke-card-footer > div {
 	margin-top: 1rem;
+}
+
+.container-comment-card {
+	border: 2px solid aliceblue;
+	border-radius: 10px;
+	margin-bottom: 2rem;
+    margin-top: -1.5rem;
+	background-color: rgba(255, 255, 255, 0.3);
+    width: 75%;
+    /* float: right; */
+}
+
+.container-comment-card > div {
+	padding: 1rem 2rem 1rem 2rem;
+	font-size: 1.3rem;
+	color: aliceblue;
+    
+}
+
+/* #comments{
+    float: right;
+} */
+.comment-group {
+	border: 2px solid aliceblue;
+	border-radius: 10px;
+	margin-bottom: 2rem;
+    margin-top: -1.5rem;
+	background-color: rgba(255, 255, 255, 0.3);
+    width: 60%;
+}
+
+.comment-form {
+    width: 100%;
+	padding: 10px;
+	border: 1px solid #cccccc77;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.1);
+	color: aliceblue;
+    display: flex;
+}
+
+#jokecontent{
+    background: rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255)
+}
+
+#btn-comment{
+    font-size: 2rem;
+    color: aliceblue;
+    margin-top: 1rem;
 }
