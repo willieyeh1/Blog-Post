@@ -64,7 +64,7 @@ router.get('/profile', (req, res) => {
 });
 
 router.get('/changepass', (req, res) => {
-	res.render('changepass')
+    res.render('changepass')
 })
 
 module.exports = router;
