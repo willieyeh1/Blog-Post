@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User, Post, Comment } = require('../../models');
-const mainEmail = require('../../utils/sendemail.js')
+const mainEmail = require('../../utils/sendemail.js');
 
 router.get('/', async (req, res) => {
 	try {
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
 		};
 		req.session.loggedIn = true;
 
-		await mainEmail(req.body.email, req.body.username)
+		await mainEmail(req.body.email, req.body.username);
 
 		res.status(201).json(userData);
 	} catch (error) {
@@ -98,21 +98,51 @@ router.delete('/:id', async (req, res) => {
 	if (!req.session.user) {
 		return res.status(403).json({ msg: 'login first!' });
 	} else if (req.session.user.id != req.params.id) {
-		return res.status(403).json({msg: "You can only delete your own account"})
+		return res
+			.status(403)
+			.json({ msg: 'You can only delete your own account' });
 	}
 	User.destroy({
-        where: {
-            id: req.params.id,
-        }
-    }).then((data) => {
-        if (data===0) {
-            return res.status(404).json({msg:"No such user exists!"})
-        }
-        res.json(data);
-    }).catch(err=> {
-        console.log(err);
-        res.status(500).json({msg:"error occurred", err})
-    })
+		where: {
+			id: req.params.id,
+		},
+	})
+		.then((data) => {
+			if (data === 0) {
+				return res.status(404).json({ msg: 'No such user exists!' });
+			}
+			res.json(data);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json({ msg: 'error occurred', err });
+		});
+});
+
+router.put('/changepassword', async (req, res) => {
+	if (!req.session.user) {
+		return res.status(403).json({ msg: 'login first!' });
+	}
+	const username = req.body.username;
+	const oldPassword = req.body.oldPassword;
+
+	if (username === req.session.user.username) {
+		// Find user
+		const foundUser = await User.findByPk(req.session.user.id);
+		// Check if passwords match
+		const validPassword = await foundUser.checkPassword(oldPassword);
+
+		if (!validPassword) {
+			return res
+				.status(403)
+				.json({ msg: `Incorrect Password! Valid password: ${validPassword}` });
+		}
+
+		await foundUser.update({ password: req.body.newPassword });
+		res.status(200).json({ msg: 'Password updated!' });
+	} else {
+		return res.status(403).json({ msg: 'Incorrect Username!' });
+	}
 });
 
 module.exports = router;
