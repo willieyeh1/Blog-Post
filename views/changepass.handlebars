@@ -4,7 +4,7 @@
             <div id="login-container">
 
                 <h1 id="login-title">Change Password</h1>
-                <form class="login-form form-group">
+                <form class="login-form form-group" id="change-pass-form">
                     {{!-- <div class="form-group"> --}}
                         <label for="usernameInput">Username:</label>
                         <input type="text" id="usernameInput" placeholder="punnydad">
@@ -17,7 +17,7 @@
                     </div> --}}
 
                     <label for="passwordInput">New Password:</label>
-                    <input type="password" id="passwordInput" name="passwordInput" placeholder="Punexpected!">
+                    <input type="password" id="newPasswordInput" name="passwordInput" placeholder="Punexpected!">
 
                     <div class="form-group" id="submits">
                         <input id="login-btn" type="submit" value="Change Password">
@@ -35,3 +35,4 @@
 
 
         <script src="/js/login.js"></script>
+        <script src="/js/changepassword.js"></script>
