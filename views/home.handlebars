@@ -1,81 +1,91 @@
 {{#each dadjokes as |dadjoke|}}
-	<div class='container'>
-		<div class='container-joke-card'>
-			<div id='joke-card-header'>
-				<div class='col-12 d-flex justify-content-between'>
-					<div id='authorname'>@{{dadjoke.user.username}}</div>
-					<div id='postdate'>{{createdAt}}</div>
-				</div>
-			</div>
-			<div>
-				<div class='col-12'>{{content}}</div>
-			</div>
-			<div class='row'>
-				<div class='col-9' id="hidePunch" style="display: none">{{punchline}}</div>
-				<div class='col-3'><button class='show-punchline' onclick="showPunchline">Show Punchline</button>
-				</div>
-			</div>
-			<div id='joke-card-footer'>
-				<div>
-					<div class='row' id='joke-card-footer2'>
-						<div class='col-1'>
-							<button class='post-btns'>
-								{{#if userLikeStatus}}
-									{{! <button class='post-btns'>
-									<i class='fa-solid fa-heart' id='like-button'></i>
-								</button> }}
-									<i
-										class='fa-solid fa-heart'
-										id='like-button'
-										post-id='{{id}}'
-										isLiked='{{userLikeStatus}}'
-									></i>
+<div class='container'>
+    <div class='container-joke-card'>
+        <div id='joke-card-header'>
+            <div class='col-12 d-flex justify-content-between'>
+                <div id='authorname'>@{{dadjoke.user.username}}</div>
+                <div id='postdate'>{{createdAt}}</div>
+            </div>
+        </div>
+        <div>
+            <div class='col-12'>{{content}}</div>
+        </div>
+        <div class='row'>
+            <div class='col-9' id="hidePunch" style="display: none">{{punchline}}</div>
+            <div class='col-3'><button class='show-punchline' onclick="showPunchline">Show Punchline</button>
+            </div>
+        </div>
+        <div id='joke-card-footer'>
+            <div>
+                <div class='row' id='joke-card-footer2'>
+                    <div class='col-1'>
+                        <button class='post-btns'>
+                            {{#if userLikeStatus}}
+                            {{! <button class='post-btns'>
+                                <i class='fa-solid fa-heart' id='like-button'></i>
+                            </button> }}
+                            <i class='fa-solid fa-heart' id='like-button' post-id='{{id}}'
+                                isLiked='{{userLikeStatus}}'></i>
 
-								{{else}}
-									{{! <button class='post-btns'>
-									<i class='fa-regular fa-heart' id='like-button'></i>
-								</button> }}
-									<i
-										class='fa-regular fa-heart'
-										id='like-button'
-										post-id='{{id}}'
-									></i>
-								{{/if}}
-							</button>
-						</div>
-						<div class='col-1'>
-							<i class='fa-regular fa-comment' id='comment-button'></i>
-						</div>
-						<div class='col-10 text-end'>
-							<button class='bookmark-btn'>
-								{{#if userBookmarkStatus}}
-									<i
-										class='fa-solid fa-bookmark'
-										id='bookmark-btn'
-										post-id='{{id}}'
-										isBookmarked='{{userBookmarkStatus}}'
-									></i>
-								{{else}}
-									<i
-										class='fa-regular fa-bookmark'
-										id='bookmark-btn'
-										post-id='{{id}}'
-										isBookmarked='{{userBookmarkStatus}}'
-									></i>
-								{{/if}}
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class='row' id='row-count-likes'>
-				<div>
-					{{likecounter}}
-					likes
-				</div>
-			</div>
-		</div>
-	</div>
+                            {{else}}
+                            {{! <button class='post-btns'>
+                                <i class='fa-regular fa-heart' id='like-button'></i>
+                            </button> }}
+                            <i class='fa-regular fa-heart' id='like-button' post-id='{{id}}'></i>
+                            {{/if}}
+                        </button>
+                    </div>
+                    <div class='col-1'>
+                        <i class='fa-regular fa-comment' id='comment-button'></i>
+                    </div>
+                    <div class='col-10 text-end'>
+                        <button class='bookmark-btn'>
+                            {{#if userBookmarkStatus}}
+                            <i class='fa-solid fa-bookmark' id='bookmark-btn' post-id='{{id}}'
+                                isBookmarked='{{userBookmarkStatus}}'></i>
+                            {{else}}
+                            <i class='fa-regular fa-bookmark' id='bookmark-btn' post-id='{{id}}'
+                                isBookmarked='{{userBookmarkStatus}}'></i>
+                            {{/if}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row' id='row-count-likes'>
+            <div>
+                {{likecounter}}
+                likes
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{!-- comment section --}}
+<div class="container d-flex justify-content-end" id="comments">
+    <div class="container-comment-card">
+        <div class="row">
+            <div class="col-8 d-flex">
+                But I make so much dough</div>
+            <div class="col-4 text-end"> @{{dadjoke.user.username}} on {{createdAt}} </div>
+        </div>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-end">
+    <div class="col-12 comment-group">
+    <form class="col-10 comment-form form-group" id="newJokeCard">
+        <textarea id="jokecontent" class="punchlineinput" aria-describedby="passwordHelpBlock"
+            placeholder="Add Comment">
+        </textarea>
+        <div class="col-2 text-center">
+            <button class="comment-btn text-center" id="btn-comment"><i class="fa-regular fa-paper-plane"></i></button>
+        </div>
+    </form>
+    </div>
+</div>
+</div>
 {{/each}}
 
 <script src='/js/likeunlike.js'></script>
@@ -83,7 +93,7 @@
 <script src="/js/punchlineButton.js"></script>
 
 {{!-- {{#if loggedIn}}
-	<script src='/js/likeunlike.js'></script>
+<script src='/js/likeunlike.js'></script>
 {{/if}} --}}
 
 {{! <i class="fa-brands fa-github" style="font-size: 3rem; color: white"></i> }}
