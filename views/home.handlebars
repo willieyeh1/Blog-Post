@@ -18,7 +18,11 @@
             <div>
                 <div class="row" id="joke-card-footer2">
                     <div class="col-1" id="like-button">
+                        {{#if userLikeStatus}}
+                        <i class="fa-solid fa-heart"></i>
+                        {{else}}
                         <i class="fa-regular fa-heart"></i>
+                        {{/if}}
                     </div>
                     <div class="col-1" id="comment-button">
                         <i class="fa-regular fa-comment"></i>
@@ -37,5 +41,7 @@
     </div>
 </div>
 {{/each}}
+
+
 
 {{!-- <i class="fa-brands fa-github" style="font-size: 3rem; color: white"></i> --}}
