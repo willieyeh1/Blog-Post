@@ -229,7 +229,7 @@ main {
 	border: 2px solid aliceblue;
 	border-radius: 10px;
 	margin-bottom: 2rem;
-	background-color: rgba(255, 255, 255, 0.4);
+	background-color: #9c6cb07a;
 	width: 70%;
 }
 
@@ -237,6 +237,11 @@ main {
 	border-bottom: 2px solid aliceblue;
 	padding-right: 0;
 	padding-left: 0;
+	background-color: #776cb079;
+}
+
+.jokeOTD-title {
+	font-size: 2rem;
 }
 
 .container-jokeOTD > div {
@@ -285,6 +290,10 @@ main {
 	color: aliceblue;
 }
 
+.left-side-profile, .right-side-profile {
+	width: 40%;
+}
+
 .container-profile {
 	width: 100%;
 	justify-content: space-around;
@@ -299,7 +308,7 @@ main {
 
 .container-profile-card > div {
 	padding: 1rem 2rem 1rem 2rem;
-	width: 30rem;
+	/* width: 30rem; */
 	font-size: 1.3rem;
 	color: aliceblue;
 }
@@ -310,6 +319,7 @@ main {
 .yoursaves {
 	display: flex;
 	justify-content: space-around;
+	flex-direction: row;
 }
 #delete-btn {
 	text-align: right;
@@ -333,7 +343,6 @@ main {
     margin-top: -1.5rem;
 	background-color: rgba(255, 255, 255, 0.3);
     width: 75%;
-    /* float: right; */
 }
 
 .container-comment-card > div {
@@ -343,9 +352,7 @@ main {
     
 }
 
-/* #comments{
-    float: right;
-} */
+
 .comment-group {
 	border: 2px solid aliceblue;
 	border-radius: 10px;
@@ -375,4 +382,17 @@ main {
     font-size: 2rem;
     color: aliceblue;
     margin-top: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+	.yoursaves {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.left-side-profile, .right-side-profile {
+		width: 80%;
+	}
+
+
 }

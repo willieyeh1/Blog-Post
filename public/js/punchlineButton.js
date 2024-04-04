@@ -5,12 +5,12 @@ function showPunchline() {
     const button = this;
     const punchlineDiv = button.parentElement.previousElementSibling;
 
-    if (punchlineDiv.style.display === 'none') {
-        punchlineDiv.style.display = 'block';
-        showButton.textContent = 'Hide Punchline';
+    if (punchlineDiv.style.visibility === 'hidden') {
+        punchlineDiv.style.visibility = 'visible';
+        showButton.textContent = 'Punchline'
     } else {
-        punchlineDiv.style.display = 'none';
-        showButton.textContent = 'Show Punchline'
+        punchlineDiv.style.visibility = 'hidden';
+        showButton.textContent = 'Punchline'
     }
 }
 showButton.forEach(function(button) {

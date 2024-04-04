@@ -8,13 +8,13 @@
 				</div>
 			</div>
 			<div>
-				<div class='col-12'>{{content}}</div>
+				<div class='col-12'>{{jotd.joke}}</div>
 			</div>
-			<div class='row'>
+			{{!-- <div class='row'>
 				<div class='col-9' id="hidePunch" style="display: none">{{punchline}}</div>
 				<div class='col-3'><button class='show-punchline' onclick="showPunchline">Show Punchline</button>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</div>
 </div>
@@ -32,8 +32,8 @@
 				<div class='col-12'>{{content}}</div>
 			</div>
 			<div class='row'>
-				<div class='col-9' id="hidePunch" style="display: none">{{punchline}}</div>
-				<div class='col-3'><button class='show-punchline' onclick="showPunchline">Show Punchline</button>
+				<div class='col-9' id="hidePunch" style="visibility: hidden">{{punchline}}</div>
+				<div class='col-3'><button class='show-punchline'>Show Punchline</button>
 				</div>
 			</div>
 			<div id='joke-card-footer'>
@@ -103,8 +103,8 @@
 <div class="container d-flex justify-content-end" id="comments">
     <div class="container-comment-card">
         <div class="row">
-            <div class="col-8 d-flex">
-                But I make so much dough</div>
+            <div class="col-8 d-flex" style="display:none">
+                {{comments}}</div>
             <div class="col-4 text-end"> @{{dadjoke.user.username}} on {{createdAt}} </div>
         </div>
     </div>
