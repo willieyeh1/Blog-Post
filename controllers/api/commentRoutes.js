@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-// Create new post
+// Create new comment
 router.post('/', async (req, res) => {
 	if (!req.session.user) {
 		return res.status(403).json({ msg: 'login first!' });
@@ -51,6 +51,7 @@ router.post('/', async (req, res) => {
 			postId: req.body.postId,
 			userId: req.session.user.id,
 		});
+		
 		res.status(201).json(commentData);
 	} catch (error) {
 		console.log(error);

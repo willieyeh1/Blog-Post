@@ -34,6 +34,10 @@ router.get('/:id', async (req, res) => {
 					model: User,
 					as: 'saves',
 				},
+				{
+					model: Comment,
+					include: [User]
+				},
 			],
 		});
 		res.status(200).json(postData);

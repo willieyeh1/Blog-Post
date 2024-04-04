@@ -100,16 +100,17 @@
 
     
     {{!-- comment section --}}
+    {{#each dadjoke.comments as |comments|}}
 <div class="container d-flex justify-content-end" id="comments">
     <div class="container-comment-card">
         <div class="row">
             <div class="col-8 d-flex" style="display:none">
-                {{comments}}</div>
-            <div class="col-4 text-end"> @{{dadjoke.user.username}} on {{createdAt}} </div>
+                {{comments.content}}</div>
+            <div class="col-4 text-end"> @{{comments.user.username}} on {{comments.createdAt}} </div>
         </div>
     </div>
 </div>
-
+    {{/each}}
 <div class="container d-flex justify-content-end">
     <div class="col-12 comment-group">
     <form class="col-10 comment-form form-group" id="newJokeCard">
