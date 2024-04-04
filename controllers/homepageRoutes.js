@@ -7,13 +7,14 @@ const axios = require('axios');
 
 // Get method
 router.get('/', async (req, res) => {
-	axios({
+	let jotd;
+	const jokeOftheDay = await axios({
 		method: 'get',
 		url: 'https://icanhazdadjoke.com/',
 		headers: { Accept: 'application/json' },
 	})
 		.then(function (response) {
-			console.log(response.data);
+			jotd = response.data
 		})
 		.catch((error) => {
 			console.log(error);
@@ -35,12 +36,25 @@ router.get('/', async (req, res) => {
 			],
 			order: [['id', 'DESC']],
 		});
+		const commentData = await Comment.findAll({
+			include: [Post, User]
+		});
+		const comments = commentData.map((comment) => comment.toJSON())
+
 		const dadjokes = dadjokeData.map((jokes) => jokes.toJSON());
 		for (let i = 0; i < dadjokes.length; i++) {
 			dadjokes[i].createdAt = dayjs(dadjokes[i].createdAt).format('M/D/YYYY');
 			const likecount = await dadjokeData[i].countLikes();
 			dadjokes[i].likecounter = likecount;
+			for (let j = 0; j < comments.length; j++) {
+				if (comments[j].post.id === dadjokes[i].id) {
+					dadjokes[i].comment[j] = comments.content
+					// dadjokes.comments.push(comments[j].content)
+				}				
+			}
 		}
+
+		
 
 		if (req.session.loggedIn) {
 			for (let i = 0; i < dadjokes.length; i++) {
@@ -65,11 +79,17 @@ router.get('/', async (req, res) => {
 			}
 		}
 
+		
 		// console.log(dadjokes);
+		console.log(comments)
 
+		// console.log(jokeOftheDay)
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
+			jotd,
+			comments,
+			layout: 'main2'
 		});
 	} catch (err) {
 		console.log(err);
@@ -167,7 +187,9 @@ router.get('/profile', withAuth, async (req, res) => {
 		// }
 		res.render('profile', {
 			userJokes,
-			userSavedJokes
+			userSavedJokes,
+			layout: "profilemain",
+			loggedIn: req.session.loggedIn
 		});
 
 
