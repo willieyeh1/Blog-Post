@@ -137,7 +137,7 @@ main {
 	color: aliceblue;
 }
 
-#show-punchline {
+.show-punchline {
 	width: 90%;
 	padding: 0.4rem;
 	border: 2px solid #cccccc77;
@@ -147,11 +147,11 @@ main {
 	color: aliceblue;
 }
 
-#show-punchline:hover {
+.show-punchline:hover {
 	background: rgba(114, 129, 255, 0.5);
 }
 
-#show-punchline:active {
+.show-punchline:active {
 	background: rgba(114, 129, 255, 0.7);
 }
 
