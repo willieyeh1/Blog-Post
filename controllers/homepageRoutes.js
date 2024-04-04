@@ -87,8 +87,81 @@ router.get('/createacct', (req, res) => {
 	res.render('createacct');
 });
 
-router.get('/profile', (req, res) => {
-	res.render('profile');
+router.get('/profile', withAuth, async (req, res) => {
+	try {
+		const userJokeData = await Post.findAll({
+			where: { userId: req.session.user.id },
+			include: [
+				User,
+				{
+					model: User,
+					as: 'likes',
+					attribute: ['id'],
+				},
+				{
+					model: User,
+					as: 'saves',
+				},
+			],
+			// order: [['id', 'DESC']],
+		});
+		const userJokes = userJokeData.map((jokes) => jokes.toJSON());
+		for (let i = 0; i < userJokes.length; i++) {
+			userJokes[i].createdAt = dayjs(userJokes[i].createdAt).format('M/D/YYYY');
+			const likecount = await userJokeData[i].countLikes();
+			userJokes[i].likecounter = likecount;
+		}
+
+		const userJokeDataForSaved = await Post.findAll({
+			include: [
+				User,
+				{
+					model: User,
+					as: 'likes',
+					attribute: ['id'],
+				},
+				{
+					model: User,
+					as: 'saves',
+				},
+			],
+			// order: [['id', 'DESC']],
+		});
+
+		const userSavedJokes = userJokeDataForSaved.map((jokes) => jokes.toJSON());
+		for (let i = 0; i < userSavedJokes.length; i++) {
+			for (let j = 0; j < userSavedJokes[i].saves.length; j++) {
+				if (userSavedJokes[i].saves[j].id === req.session.user.id) {
+					userSavedJokes[i].userSavedPost = true;
+				} else {
+					userSavedJokes[i].userSavedPost = false;
+				}
+			}
+		}
+		// console.log(userJokes)
+		console.log(userSavedJokes)
+
+		// console.log(userSavedJokes)
+		// // Check bookmarks
+		// for (let i = 0; i < dadjokes.length; i++) {
+		// 	for (let j = 0; j < dadjokes[i].saves.length; j++) {
+		// 		if (dadjokes[i].saves[j].id === req.session.user.id) {
+		// 			dadjokes[i].userBookmarkStatus = true;
+		// 		} else {
+		// 			dadjokes[i].userBookmarkStatus = false;
+		// 		}
+		// 	}
+		// }
+		res.render('profile', {
+			userJokes,
+			userSavedJokes
+		});
+
+
+	} catch (err) {
+		console.log(err)
+		res.status(500).json({ msg: 'error occurred', err })
+	}
 });
 
 router.get('/changepass', (req, res) => {
