@@ -106,27 +106,25 @@ router.post('/logout', (req, res) => {
 	}
 });
 
-// router.delete('/:id', async (req, res) => {
-// 	if (!req.session.user) {
-// 		return res.status(403).json({ msg: 'login first!' });
-// 	}
-// 	try {
-// 		const userData = await User.destroy({
-// 			where: {
-// 				id: req.params.id,
-// 				userId: req.session.user.id,
-// 			},
-// 		});
-// 		if (postData === 0) {
-// 			return res
-// 				.status(404)
-// 				.json({ msg: 'no such Post exists or its not yours' });
-// 		}
-// 		res.json(postData);
-// 	} catch (error) {
-// 		console.log(error);
-// 		res.status(500).json({ msg: 'error occurred', error });
-// 	}
-// });
+router.delete('/:id', async (req, res) => {
+	if (!req.session.user) {
+		return res.status(403).json({ msg: 'login first!' });
+	} else if (req.session.user.id != req.params.id) {
+		return res.status(403).json({msg: "You can only delete your own account"})
+	}
+	User.destroy({
+        where: {
+            id: req.params.id,
+        }
+    }).then((data) => {
+        if (data===0) {
+            return res.status(404).json({msg:"No such user exists!"})
+        }
+        res.json(data);
+    }).catch(err=> {
+        console.log(err);
+        res.status(500).json({msg:"error occurred", err})
+    })
+});
 
 module.exports = router;

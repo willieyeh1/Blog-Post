@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 			dadjokes[i].likecounter = likecount;
 		}
 
-		console.log(dadjokes);
+		// console.log(dadjokes);
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
@@ -62,5 +62,9 @@ router.get('/createacct', (req, res) => {
 router.get('/profile', (req, res) => {
 	res.render('profile');
 });
+
+router.get('/changepass', (req, res) => {
+	res.render('changepass')
+})
 
 module.exports = router;
