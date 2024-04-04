@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User, Post, Comment } = require('../../models');
+const mainEmail = require('../../utils/sendemail.js')
 
 router.get('/', async (req, res) => {
 	try {
@@ -38,8 +39,9 @@ router.post('/', async (req, res) => {
 			id: userData.id,
 			username: userData.username,
 		};
-
 		req.session.loggedIn = true;
+
+		await mainEmail(req.body.email, req.body.username)
 
 		res.status(201).json(userData);
 	} catch (error) {
@@ -58,9 +60,7 @@ router.post('/login', async (req, res) => {
 		if (!foundUser) {
 			return res.status(401).json({ msg: 'invalid email/password combo' });
 		}
-		// if (!bcrypt.compareSync(req.body.password, foundUser.password)) {
-		// 	return res.status(401).json({ msg: 'invalid email/password combo' });
-		// }
+
 		const validPassword = await foundUser.checkPassword(req.body.password);
 
 		if (!validPassword) {
@@ -70,25 +70,13 @@ router.post('/login', async (req, res) => {
 			return;
 		}
 
-		// req.session.save(() => {
-		// 	req.session.loggedIn = true;
-		// 	req.session.user = {
-		// 		id: foundUser.id,
-		// 		name: foundUser.username,
-		// 	};
-		// });
-
 		req.session.user = {
 			id: foundUser.id,
 			username: foundUser.username,
-			// email: foundUser.email,
-			// password: foundUser.password,
-			// loggedIn: false,
 		};
 
 		req.session.loggedIn = true;
 
-		// res.status(200).json(userData);
 		return res.json(foundUser);
 	} catch (error) {
 		console.log(error);

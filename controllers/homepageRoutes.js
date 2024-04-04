@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
 				{
 					model: User,
 					as: 'likes',
+					attribute: ['id']
 				},
 				{
 					model: User,
@@ -28,7 +29,18 @@ router.get('/', async (req, res) => {
 			dadjokes[i].likecounter = likecount;
 		}
 
-		// console.log(dadjokes);
+		if (req.session.loggedIn) {
+			for (let i = 0; i < dadjokes.length; i++) {
+				for (let j = 0; j < dadjokes[i].likes.length; j++) {
+					if (dadjokes[i].likes[j].id === req.session.user.id) {
+						dadjokes[i].userLikeStatus = true
+					} else {
+						dadjokes[i].userLikeStatus = false
+					}
+				}
+			}
+		}
+		
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
