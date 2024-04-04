@@ -11,8 +11,8 @@
             <div class='col-12'>{{content}}</div>
         </div>
         <div class='row'>
-            <div class='col-9'>{{punchline}}</div>
-            <div class='col-3'><button id='show-punchline'>Show Punchline</button>
+            <div class='col-9' id="hidePunch" style="display: none">{{punchline}}</div>
+            <div class='col-3'><button class='show-punchline' onclick="showPunchline">Show Punchline</button>
             </div>
         </div>
         <div id='joke-card-footer'>
@@ -90,6 +90,7 @@
 
 <script src='/js/likeunlike.js'></script>
 <script src='/js/bookmarks.js'></script>
+<script src="/js/punchlineButton.js"></script>
 
 {{!-- {{#if loggedIn}}
 <script src='/js/likeunlike.js'></script>
