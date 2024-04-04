@@ -85,10 +85,11 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 
-router.put('/:postId/user/:userId', async (req, res) => {
+// Like Post
+router.put('/:postId/user', async (req, res) => {
 	try {
 		const data = await Post.findByPk(req.params.postId);
-		await data.addLike(req.params.userId);
+		await data.addLike(req.session.user.id);
 		const count = await data.countLikes();
 		console.log(count);
 		res.json({ msg: "User's like added" });
@@ -98,11 +99,38 @@ router.put('/:postId/user/:userId', async (req, res) => {
 	}
 });
 
-router.delete('/:postId/user/:userId', async (req, res) => {
+// Unlike Post
+router.delete('/:postId/user', async (req, res) => {
 	try {
 		const data = await Post.findByPk(req.params.postId);
-		await data.removeLike(req.params.userId);
+		await data.removeLike(req.session.user.id);
 		res.json({ msg: "User's has unliked the post" });
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({ msg: 'error occurred', err });
+	}
+});
+
+// Save Post
+router.put('/:postId/usersaves', async (req, res) => {
+	try {
+		const data = await Post.findByPk(req.params.postId);
+		await data.addSave(req.session.user.id);
+		// const count = await data.countLikes();
+		// console.log(count);
+		res.json({ msg: "User's save added" });
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({ msg: 'error occurred', err });
+	}
+});
+
+// Unsave Post
+router.delete('/:postId/usersaves', async (req, res) => {
+	try {
+		const data = await Post.findByPk(req.params.postId);
+		await data.removeSave(req.session.user.id);
+		res.json({ msg: "User's has unsaved the post" });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json({ msg: 'error occurred', err });

@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 				{
 					model: User,
 					as: 'likes',
-					attribute: ['id']
+					attribute: ['id'],
 				},
 				{
 					model: User,
@@ -33,14 +33,27 @@ router.get('/', async (req, res) => {
 			for (let i = 0; i < dadjokes.length; i++) {
 				for (let j = 0; j < dadjokes[i].likes.length; j++) {
 					if (dadjokes[i].likes[j].id === req.session.user.id) {
-						dadjokes[i].userLikeStatus = true
+						dadjokes[i].userLikeStatus = true;
 					} else {
-						dadjokes[i].userLikeStatus = false
+						dadjokes[i].userLikeStatus = false;
+					}
+				}
+			}
+
+			// Check bookmarks
+			for (let i = 0; i < dadjokes.length; i++) {
+				for (let j = 0; j < dadjokes[i].saves.length; j++) {
+					if (dadjokes[i].saves[j].id === req.session.user.id) {
+						dadjokes[i].userBookmarkStatus = true;
+					} else {
+						dadjokes[i].userBookmarkStatus = false;
 					}
 				}
 			}
 		}
-		
+
+		// console.log(dadjokes);
+
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
@@ -76,7 +89,7 @@ router.get('/profile', (req, res) => {
 });
 
 router.get('/changepass', (req, res) => {
-    res.render('changepass')
-})
+	res.render('changepass');
+});
 
 module.exports = router;
