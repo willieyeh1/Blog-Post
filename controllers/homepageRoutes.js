@@ -112,17 +112,36 @@ router.get('/profile', withAuth, async (req, res) => {
 			userJokes[i].likecounter = likecount;
 		}
 
-		console.log(userJokes)
-		for (let i = 0; i < userJokes.length; i++) {
-			for (let j = 0; j < userJokes[i].likes.length; j++) {
-				if (userJokes[i].saves[j].id === req.session.user.id) {
-					userJokes[i].userSavedPost = true;
+		const userJokeDataForSaved = await Post.findAll({
+			include: [
+				User,
+				{
+					model: User,
+					as: 'likes',
+					attribute: ['id'],
+				},
+				{
+					model: User,
+					as: 'saves',
+				},
+			],
+			// order: [['id', 'DESC']],
+		});
+
+		const userSavedJokes = userJokeDataForSaved.map((jokes) => jokes.toJSON());
+		for (let i = 0; i < userSavedJokes.length; i++) {
+			for (let j = 0; j < userSavedJokes[i].saves.length; j++) {
+				if (userSavedJokes[i].saves[j].id === req.session.user.id) {
+					userSavedJokes[i].userSavedPost = true;
 				} else {
-					userJokes[i].userSavedPost = false;
+					userSavedJokes[i].userSavedPost = false;
 				}
 			}
 		}
+		// console.log(userJokes)
+		console.log(userSavedJokes)
 
+		// console.log(userSavedJokes)
 		// // Check bookmarks
 		// for (let i = 0; i < dadjokes.length; i++) {
 		// 	for (let j = 0; j < dadjokes[i].saves.length; j++) {
@@ -135,6 +154,7 @@ router.get('/profile', withAuth, async (req, res) => {
 		// }
 		res.render('profile', {
 			userJokes,
+			userSavedJokes
 		});
 
 
