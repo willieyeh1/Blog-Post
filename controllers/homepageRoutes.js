@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 			dadjokes[i].likecounter = likecount;
 		}
 
-		console.log(dadjokes);
+		// console.log(dadjokes);
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
