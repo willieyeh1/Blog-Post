@@ -2,6 +2,12 @@
 // Other option is to use jquery
 
 const likeBtn = document.querySelectorAll('.post-btns');
+const toastElement = document.querySelector('.toast');
+
+function showToast() {
+	const toast = new bootstrap.Toast(toastElement);
+	toast.show();
+}
 
 const likeUnlike = async (e) => {
 	const isLiked = e.target.getAttribute('isLiked');
@@ -24,7 +30,8 @@ const likeUnlike = async (e) => {
 			if (res.ok) {
 				location.reload();
 			} else {
-				alert('ERROR, must be logged in to like a joke!');
+				// alert('ERROR, must be logged in to like a joke!');
+				showToast();
 			}
 		});
 	}
