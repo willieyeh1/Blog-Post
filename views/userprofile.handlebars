@@ -1,33 +1,26 @@
 <div class="container justify-content-center">
     <div class="jokeOTD-card d-flex justify-content-center">
         <div class="container-jokeOTD">
-            <div id='jokeOTD-header'>
                 <div class='col-12 d-flex justify-content-center'>
-                    <div class='jokeOTD-title text-center'>Joke of the Day!</div>
+                    <div class='jokeOTD-title text-center' data-userId="{{user.id}}">{{user.username}}'s jokes</div>
                 </div>
-            </div>
-            <div>
+            {{!-- <div>
                 <div class='col-12'>{{jotd.joke}}</div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
-    {{#each dadjokes as |dadjoke|}}
+    {{#each userJokes as |userjoke|}}
     <div class='container'>
         <div class='container-joke-card'>
             <div id='joke-card-header'>
                 <div class='col-12 d-flex justify-content-between'>
-                    <div id='authorname'><a href="/profile/{{dadjoke.user.id}}">@{{dadjoke.user.username}}</a></div>
+                    <div id='authorname'><a href="">@{{userjoke.user.username}}</a></div>
                     <div id='postdate'>{{createdAt}}</div>
                 </div>
             </div>
             <div>
-                <div class='col-12'>{{content}}</div>
-            </div>
-            <div class='row'>
-                <div class='col-9' id="hidePunch" style="visibility: hidden">{{punchline}}</div>
-                <div class='col-3'><button class='show-punchline'>Show Punchline</button>
-                </div>
+                <div class='col-12'>{{content}} {{punchline}}</div>
             </div>
             <div id='joke-card-footer'>
                 <div>
@@ -35,9 +28,8 @@
                         <div class='col-1'>
                             <button class='post-btns'>
                                 {{#if userLikeStatus}}
-                                <i class='fa-solid fa-heart' id='like-button' post-id='{{id}}'
+                                <i class='fa-solid fa-heart text-danger' id='like-button' post-id='{{id}}'
                                     isLiked='{{userLikeStatus}}'></i>
-
                                 {{else}}
                                 <i class='fa-regular fa-heart' id='like-button' post-id='{{id}}'></i>
                                 {{/if}}
@@ -74,7 +66,7 @@
 
     {{!-- comment section --}}
     <div class="comments-container" style="display: none !important">
-        {{#each dadjoke.comments as |comments|}}
+        {{#each userjoke.comments as |comments|}}
         <div class="container d-flex justify-content-end" post-id="{{id}}" id="comments">
             <div class="container-comment-card">
                 <div class="row">
@@ -107,7 +99,7 @@
 <script src='/js/bookmarks.js'></script>
 <script src="/js/punchlineButton.js"></script>
 <script src="/js/rendercomments.js"></script>
-<script src="js/addcomment.js"></script>
+<script src="/js/addCommentFromProfile.js"></script>
 
 {{!-- {{#if loggedIn}}
 <script src='/js/likeunlike.js'></script>
