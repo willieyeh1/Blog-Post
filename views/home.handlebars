@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class='position-fixed bottom-0 end-0 p-3' style='z-index: 11'>
 	<div
 		id='liveToast'
@@ -179,6 +180,114 @@
 	</div>
 {{/each}}
 
+=======
+<div class="container justify-content-center">
+    <div class="jokeOTD-card d-flex justify-content-center">
+        <div class="container-jokeOTD">
+            <div id='jokeOTD-header'>
+                <div class='col-12 d-flex justify-content-center'>
+                    <div class='jokeOTD-title text-center'>Joke of the Day!</div>
+                </div>
+            </div>
+            <div>
+                <div class='col-12'>{{jotd.joke}}</div>
+            </div>
+        </div>
+    </div>
+
+    {{#each dadjokes as |dadjoke|}}
+    <div class='container'>
+        <div class='container-joke-card'>
+            <div id='joke-card-header'>
+                <div class='col-12 d-flex justify-content-between'>
+                    <div id='authorname'><a href="/profile/{{dadjoke.user.id}}">@{{dadjoke.user.username}}</a></div>
+                    <div id='postdate'>{{createdAt}}</div>
+                </div>
+            </div>
+            <div>
+                <div class='col-12'>{{content}}</div>
+            </div>
+            <div class='row'>
+                <div class='col-9' id="hidePunch" style="visibility: hidden">{{punchline}}</div>
+                <div class='col-3'><button class='show-punchline'>Show Punchline</button>
+                </div>
+            </div>
+            <div id='joke-card-footer'>
+                <div>
+                    <div class='row' id='joke-card-footer2'>
+                        <div class='col-1'>
+                            <button class='post-btns'>
+                                {{#if userLikeStatus}}
+                                <i class='fa-solid fa-heart' id='like-button' post-id='{{id}}'
+                                    isLiked='{{userLikeStatus}}'></i>
+
+                                {{else}}
+                                <i class='fa-regular fa-heart' id='like-button' post-id='{{id}}'></i>
+                                {{/if}}
+                            </button>
+                        </div>
+                        <div class='col-1'>
+                            <button class="comment-bubble">
+                                <i class='fa-regular fa-comment' id='comment-button' post-id="{{id}}"></i>
+                            </button>
+                        </div>
+                        <div class='col-10 text-end'>
+                            <button class='bookmark-btn'>
+                                {{#if userBookmarkStatus}}
+                                <i class='fa-solid fa-bookmark text-warning' id='bookmark-btn' post-id='{{id}}'
+                                    isBookmarked='{{userBookmarkStatus}}'></i>
+                                {{else}}
+                                <i class='fa-regular fa-bookmark' id='bookmark-btn' post-id='{{id}}'
+                                    isBookmarked='{{userBookmarkStatus}}'></i>
+                                {{/if}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='row' id='row-count-likes'>
+                <div>
+                    {{likecounter}}
+                    likes
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{!-- comment section --}}
+    <div class="comments-container" style="display: none !important">
+        {{#each dadjoke.comments as |comments|}}
+        <div class="container d-flex justify-content-end" post-id="{{id}}" id="comments">
+            <div class="container-comment-card">
+                <div class="row">
+                    <div class="col-8 d-flex">
+                        {{comments.content}}</div>
+                    <div class="col-4 text-end"> @{{comments.user.username}} on {{comments.createdAt}} </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        <div class="container d-flex justify-content-end" post-id="{{id}}" id="comment-form">
+            <div class="col-12 comment-group">
+                <form class="col-10 comment-form form-group" id="newJokeCard" post-id="{{id}}">
+                    <textarea id="jokecontent" class="punchlineinput" placeholder="Add Comment">
+            </textarea>
+                    <div class="col-2 text-center">
+                        <button class="comment-btn text-center" id="btn-comment"><i
+                                class="fa-regular fa-paper-plane"  ></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        {{/each}}
+</div>
+<div class="container-movetop-btn">
+<button type="button" class="btn" id="back-to-top"><a href="#navs">Back to Top</a></button>
+</div>
+<script src='/js/likeunlike.js'></script>
+>>>>>>> dd46c2ee00cdb8b11f84a3498388a1791701ccd1
 <script src='/js/bookmarks.js'></script>
 <script src='/js/likeunlike.js'></script>
 <script src='/js/punchlineButton.js'></script>

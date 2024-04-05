@@ -76,7 +76,7 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 0.8rem;
+	font-size: 1.3rem;
 }
 
 .footer-container {
@@ -173,6 +173,7 @@ main {
 
 #login-container {
 	width: 60%;
+	margin-bottom: 2rem;
 }
 
 #error-container {
@@ -188,12 +189,18 @@ main {
 	color: white;
 }
 
-.signup-link {
+.signup-link,
+.change-pass-link {
 	margin-top: 1rem;
 	margin-bottom: -1rem;
 }
-.signup-link a {
+.signup-link a,
+.change-pass-link a {
 	color: aliceblue;
+}
+
+.change-pass-link {
+	margin-bottom: 2rem;
 }
 
 .container-joke-card {
@@ -215,6 +222,7 @@ main {
 	margin-bottom: 2rem;
 	background-color: #9c6cb07a;
 	width: 70%;
+	box-shadow: 7px 7px #456ba7;
 }
 
 #jokeOTD-header {
@@ -243,6 +251,32 @@ main {
 #authorname,
 #postdate {
 	padding: 0 1rem 0 1rem;
+}
+
+#authorname,
+#authorname a {
+	transition: all 1000ms;
+}
+
+#authorname:hover,
+#authorname a:hover {
+	transform: translateY(-10%);
+	text-shadow: 2px 2px 2px #7104ca;
+	transition: all 1000ms;
+}
+
+.fa-heart {
+	/* color: red  */
+}
+
+#like-button {
+	transition: all 500ms;
+}
+
+#like-button:hover {
+	transform: translateY(-15%);
+	color: rgb(255, 0, 76) !important;
+	transition: all 500ms;
 }
 
 #joke-card-footer {
@@ -381,25 +415,6 @@ main {
 #comments,
 #comment-form {
 	animation: slide-up 500ms forward;
-}
-
-.bg-background-white {
-	background-color: whitesmoke !important;
-}
-
-.login-btn {
-	background-color: #cf6ba3;
-	border-color: #cf6ba3;
-}
-
-.error-msg {
-	font-size: 2rem;
-	font-weight: 800;
-}
-
-.login-msg {
-	font-size: 1rem;
-	font-weight: 500;
 }
 
 @keyframes fade-in {

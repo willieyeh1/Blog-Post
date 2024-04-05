@@ -187,6 +187,83 @@ router.get('/profile', withAuth, async (req, res) => {
 	}
 });
 
+router.get('/profile/:id', withAuth, async (req, res) => {
+	try {
+		const userJokeData = await Post.findAll({
+			where: { userId: req.params.id },
+			include: [
+				User,
+				{
+					model: User,
+					as: 'likes',
+					attribute: ['id'],
+				},
+				{
+					model: User,
+					as: 'saves',
+				},
+				{
+					model: Comment,
+					include: [User],
+					attribute: ['date']
+				},
+			],
+		});
+		const userJokes = userJokeData.map((jokes) => jokes.toJSON());
+		for (let i = 0; i < userJokes.length; i++) {
+			userJokes[i].createdAt = dayjs(userJokes[i].createdAt).format('M/D/YYYY');
+			const likecount = await userJokeData[i].countLikes();
+			userJokes[i].likecounter = likecount;
+			if (userJokes[i].comments.length > 0) {
+				for (let j = 0; j < userJokes[i].comments.length; j++) {
+					userJokes[i].comments[j].createdAt = dayjs(userJokes[i].comments[j].createdAt).format('M/D/YY');
+				}
+			}
+		}
+
+		if (req.session.loggedIn) {
+			for (let i = 0; i < userJokes.length; i++) {
+				for (let j = 0; j < userJokes[i].likes.length; j++) {
+					if (userJokes[i].likes[j].id === req.session.user.id) {
+						userJokes[i].userLikeStatus = true;
+					} else {
+						userJokes[i].userLikeStatus = false;
+					}
+				}
+			}
+
+			// Check bookmarks
+			for (let i = 0; i < userJokes.length; i++) {
+				for (let j = 0; j < userJokes[i].saves.length; j++) {
+					if (userJokes[i].saves[j].id === req.session.user.id) {
+						userJokes[i].userBookmarkStatus = true;
+					} else {
+						userJokes[i].userBookmarkStatus = false;
+					}
+				}
+			}
+		}
+
+		const userProfile = await User.findByPk(req.params.id)
+		const user = userProfile.toJSON()
+
+		console.log(userJokes)
+		
+
+		res.render('userprofile', {
+			userJokes,
+			loggedIn: req.session.loggedIn,
+			user
+
+		});
+
+
+	} catch (err) {
+		console.log(err)
+		res.status(500).json({ msg: 'error occurred', err })
+	}
+});
+
 router.get('/changepass', (req, res) => {
 	res.render('changepass');
 });
