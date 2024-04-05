@@ -395,6 +395,25 @@ main {
     text-shadow: 2px 2px 2px rgb(255, 70, 255)
 }
 
+.container-movetop-btn{
+    position: fixed;
+    bottom: 13%;
+    right: 10%
+
+}
+
+#back-to-top{
+    background-color: #b06bad;
+    border: none;
+    color: white
+    
+}
+
+#back-to-top a{
+    color: white;
+    text-decoration:none;
+    
+}
 @keyframes fade-in {
 	0% {
 		opacity: 0;
