@@ -4,8 +4,9 @@
 	margin: 0;
 }
 
-#navbarlinks a, #navbarlinks button {
-    font-size: 2rem;
+#navbarlinks a,
+#navbarlinks button {
+	font-size: 2rem;
 }
 
 .headers {
@@ -13,12 +14,9 @@
 	margin-bottom: 2rem;
 }
 
-
 .navbar-nav {
 	text-align: center;
 }
-
-
 
 #navbarNav {
 	display: flex;
@@ -192,7 +190,7 @@ main {
 
 .signup-link {
 	margin-top: 1rem;
-    margin-bottom: -1rem;
+	margin-bottom: -1rem;
 }
 .signup-link a {
 	color: aliceblue;
@@ -268,7 +266,8 @@ main {
 	color: aliceblue;
 }
 
-.left-side-profile, .right-side-profile {
+.left-side-profile,
+.right-side-profile {
 	width: 40%;
 }
 
@@ -307,13 +306,13 @@ main {
 .comment-btn,
 .github-btn,
 .delete-btn,
-.comment-bubble
-{
+.comment-bubble {
 	background: none;
 	border: none;
 }
 
-#comments, #comment-form {
+#comments,
+#comment-form {
 	/* display:none !important; */
 	/* visibility: hidden; */
 }
@@ -326,65 +325,82 @@ main {
 	border: 2px solid aliceblue;
 	border-radius: 10px;
 	margin-bottom: 2rem;
-    margin-top: -1.5rem;
+	margin-top: -1.5rem;
 	background-color: rgba(255, 255, 255, 0.3);
-    width: 75%;
+	width: 75%;
 }
 
 .container-comment-card > div {
 	padding: 1rem 2rem 1rem 2rem;
 	font-size: 1.3rem;
 	color: aliceblue;
-    
 }
-
 
 .comment-group {
 	border: 2px solid aliceblue;
 	border-radius: 10px;
 	margin-bottom: 2rem;
-    margin-top: -1.5rem;
+	margin-top: -1.5rem;
 	background-color: rgba(255, 255, 255, 0.3);
-    width: 60%;
+	width: 60%;
 }
 
 .comment-form {
-    width: 100%;
+	width: 100%;
 	padding: 10px;
 	border: 1px solid #cccccc77;
 	border-radius: 5px;
 	box-sizing: border-box;
 	background: rgba(255, 255, 255, 0.1);
 	color: aliceblue;
-    display: flex;
+	display: flex;
 }
 
-#jokecontent{
-    background: rgba(255, 255, 255, 0.2);
-    color: rgb(255, 255, 255)
+#jokecontent {
+	background: rgba(255, 255, 255, 0.2);
+	color: rgb(255, 255, 255);
 }
 
-#btn-comment{
-    font-size: 2rem;
-    color: aliceblue;
-    margin-top: 1rem;
+#btn-comment {
+	font-size: 2rem;
+	color: aliceblue;
+	margin-top: 1rem;
 }
-#btn-github{
-    color: white;
-    font-size: 1rem;
-}
-
-#post-delete-btn{
-    color: white
-}
-.github{
-    color: white;
+#btn-github {
+	color: white;
+	font-size: 1rem;
 }
 
-#comments, #comment-form {
+#post-delete-btn {
+	color: white;
+}
+.github {
+	color: white;
+}
+
+#comments,
+#comment-form {
 	animation: slide-up 500ms forward;
 }
 
+.bg-background-white {
+	background-color: whitesmoke !important;
+}
+
+.login-btn {
+	background-color: #cf6ba3;
+	border-color: #cf6ba3;
+}
+
+.error-msg {
+	font-size: 2rem;
+	font-weight: 800;
+}
+
+.login-msg {
+	font-size: 1rem;
+	font-weight: 500;
+}
 
 @keyframes fade-in {
 	0% {
@@ -430,9 +446,8 @@ main {
 		align-items: center;
 	}
 
-	.left-side-profile, .right-side-profile {
+	.left-side-profile,
+	.right-side-profile {
 		width: 80%;
 	}
-
-
 }
