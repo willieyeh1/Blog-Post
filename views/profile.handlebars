@@ -36,7 +36,8 @@
                 {{!-- {{#if userdata.userSavedPost}} --}}
                 <div class="container-profile-card">
                     <div class="row">
-                        <div class="col-12">{{content}} {{punchline}}</div>
+                        <div class="col-10">{{content}} {{punchline}}</div>
+                        <div class="col-2 text-end" id="authorname"><a href="/profile/{{userdata.user.id}}"> @{{userdata.user.username}}</a></div>
                     </div>
                     <div class="row" id="row-count-likes">
                         <div class="col-3">
