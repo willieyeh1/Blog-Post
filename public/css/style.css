@@ -380,6 +380,54 @@ main {
 .github{
     color: white;
 }
+
+#comments, #comment-form {
+	animation: slide-up 500ms forwards;
+}
+
+#comments[closing] {
+	animation: slide-down 500ms forwards;
+
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-out {
+	100% {
+		opacity: 0;
+	}
+	0% {
+		opacity: 1;
+	}
+}
+
+@keyframes slide-up {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-down {
+	0% {
+		transform: translateY(0%);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}
+
 @media screen and (max-width: 1000px) {
 	.yoursaves {
 		flex-direction: column;
