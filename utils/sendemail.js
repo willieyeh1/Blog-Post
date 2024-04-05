@@ -1,11 +1,5 @@
 const nodemailer = require('nodemailer')
 
-// const user = document.querySelector('#emailInput').value.trim()
-// const username = document.querySelector('#usernameInput').value.trim()
-
-
-
-// //   dadjokesarefun!!
   async function mainEmail(user, username) {
 
     let content = `
