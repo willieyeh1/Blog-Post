@@ -38,7 +38,7 @@
                                 {{! <button class='post-btns'>
                                     <i class='fa-solid fa-heart' id='like-button'></i>
                                 </button> }}
-                                <i class='fa-solid fa-heart' id='like-button' post-id='{{id}}'
+                                <i class='fa-solid fa-heart text-danger' id='like-button' post-id='{{id}}'
                                     isLiked='{{userLikeStatus}}'></i>
 
                                 {{else}}
@@ -57,7 +57,7 @@
                         <div class='col-10 text-end'>
                             <button class='bookmark-btn'>
                                 {{#if userBookmarkStatus}}
-                                <i class='fa-solid fa-bookmark' id='bookmark-btn' post-id='{{id}}'
+                                <i class='fa-solid fa-bookmark text-warning' id='bookmark-btn' post-id='{{id}}'
                                     isBookmarked='{{userBookmarkStatus}}'></i>
                                 {{else}}
                                 <i class='fa-regular fa-bookmark' id='bookmark-btn' post-id='{{id}}'
