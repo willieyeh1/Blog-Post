@@ -12,7 +12,7 @@ const bookmark = async (e) => {
 			if (res.ok) {
 				location.reload();
 			} else {
-				alert('ERROR');
+				alert('ERROR, something went wrong.');
 			}
 		});
 	} else {
@@ -22,7 +22,7 @@ const bookmark = async (e) => {
 			if (res.ok) {
 				location.reload();
 			} else {
-				alert('ERROR');
+				alert('ERROR, must be logged in to save a joke!');
 			}
 		});
 	}

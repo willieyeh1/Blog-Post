@@ -14,7 +14,7 @@ const likeUnlike = async (e) => {
 			if (res.ok) {
 				location.reload();
 			} else {
-				alert('ERROR');
+				alert('ERROR, something went wrong');
 			}
 		});
 	} else {
@@ -24,7 +24,7 @@ const likeUnlike = async (e) => {
 			if (res.ok) {
 				location.reload();
 			} else {
-				alert('ERROR');
+				alert('ERROR, must be logged in to like a joke!');
 			}
 		});
 	}

@@ -16,8 +16,10 @@
                             {{likecounter}} likes
                         </div>
                     
-                        <div class="col-9" id ="delete-btn">
-                            <button class="delete-btn" id="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                        <div class="col-9 text-end">
+                            <button class="delete-btn" id="post-delete-btn">
+                                <i class="fa-solid fa-trash-can" post-id='{{id}}'></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -40,8 +42,10 @@
                         <div class="col-3">
                             {{likecounter}} likes
                         </div>
-                        <div class="col-9" id ="delete-btn">
-                            <button class="delete-btn" id="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                        <div class="col-9 text-end">
+                            <button class="delete-btn text-white" id="remove-bookmark-btn">
+                                <i class="fa-solid fa-trash-can" post-id="{{usersavedjoke.id}}"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -50,3 +54,6 @@
             </div>
         </div>
 </div>    
+
+<script src="/js/deletepost.js"></script>
+<script src="/js/removesaved.js"></script>
