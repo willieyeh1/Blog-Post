@@ -4,32 +4,21 @@
 	margin: 0;
 }
 
-.nav {
-	/* margin-left: 69%; */
-	/* margin-top: 100px; */
-
-	font-size: 30px;
+#navbarlinks a, #navbarlinks button {
+    font-size: 2rem;
 }
 
 .headers {
-	/* background: rgb(255,215,59);
-    background: linear-gradient(0deg, rgba(255,215,59,1) 0%, rgba(255,35,35,0.8225665266106442) 100%); */
 	border-bottom: 2px solid rgb(189, 189, 189);
 	margin-bottom: 2rem;
 }
 
-.navbar-brand {
-	/* font-size: 50px; */
-}
 
 .navbar-nav {
 	text-align: center;
 }
 
-/* #margin{
-    margin-top: 50px;
-    margin-bottom: 50px
-} */
+
 
 #navbarNav {
 	display: flex;
@@ -43,8 +32,8 @@
 }
 
 body {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	background-image: linear-gradient(
 		to right top,
 		#026796,
@@ -88,9 +77,7 @@ footer {
 	width: 300px;
 	display: flex;
 	align-items: center;
-	/* justify-content: space-between; */
 	justify-content: center;
-	/* white-space: nowrap; */
 	font-size: 0.8rem;
 }
 
@@ -195,9 +182,7 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	/* height: 100vh; */
 	margin-top: 5rem;
-
 	color: aliceblue;
 }
 .new-joke-text {
@@ -207,6 +192,7 @@ main {
 
 .signup-link {
 	margin-top: 1rem;
+    margin-bottom: -1rem;
 }
 .signup-link a {
 	color: aliceblue;
@@ -274,18 +260,10 @@ main {
 	display: flex;
 	flex-direction: row;
 }
-/* #bookmark-btn {
-    text-align: right;
-} */
-
-/* #joke-card-footer i {
-	margin-top: 1rem;
-} */
 
 #like-button,
 #comment-button,
 #bookmark-btn {
-	/* cursor: pointer; */
 	font-size: 2rem;
 	color: aliceblue;
 }
@@ -308,7 +286,6 @@ main {
 
 .container-profile-card > div {
 	padding: 1rem 2rem 1rem 2rem;
-	/* width: 30rem; */
 	font-size: 1.3rem;
 	color: aliceblue;
 }
@@ -327,7 +304,10 @@ main {
 
 .post-btns,
 .bookmark-btn,
-.comment-btn{
+.comment-btn,
+.github-btn,
+.delete-btn
+{
 	background: none;
 	border: none;
 }
@@ -383,7 +363,17 @@ main {
     color: aliceblue;
     margin-top: 1rem;
 }
+#btn-github{
+    color: white;
+    font-size: 1rem;
+}
 
+#btn-delete{
+    color: white
+}
+.github{
+    color: white;
+}
 @media screen and (max-width: 1000px) {
 	.yoursaves {
 		flex-direction: column;
