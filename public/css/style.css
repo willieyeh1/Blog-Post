@@ -192,7 +192,7 @@ main {
 .signup-link,
 .change-pass-link {
 	margin-top: 1rem;
-	margin-bottom: -1rem;
+	/* margin-bottom: -1rem; */
 }
 .signup-link a,
 .change-pass-link a {
@@ -402,7 +402,7 @@ main {
 }
 #btn-github {
 	color: white;
-	font-size: 1rem;
+	font-size: 2rem;
 }
 
 #post-delete-btn {
@@ -417,6 +417,53 @@ main {
 	animation: slide-up 500ms forward;
 }
 
+#authorname,
+#postdate,
+#row-count-likes {
+	font-weight: bold;
+	font-size: 1.4rem;
+}
+#authorname a {
+	text-decoration: none;
+	color: white;
+	text-shadow: 2px 2px 2px rgb(255, 70, 255);
+}
+
+.container-movetop-btn {
+	position: fixed;
+	bottom: 13%;
+	right: 10%;
+}
+
+#back-to-top {
+	background-color: #b06bad;
+	border: none;
+	color: white;
+}
+
+#back-to-top a {
+	color: white;
+	text-decoration: none;
+}
+
+.bg-background-white {
+	background-color: whitesmoke !important;
+}
+
+.login-btn {
+	background-color: #cf6ba3;
+	border-color: #cf6ba3;
+}
+
+.error-msg {
+	font-size: 2rem;
+	font-weight: 800;
+}
+
+.login-msg {
+	font-size: 1rem;
+	font-weight: 500;
+}
 @keyframes fade-in {
 	0% {
 		opacity: 0;
