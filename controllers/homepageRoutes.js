@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
 					dadjokes[i].comments[j].createdAt = dayjs(dadjokes[i].comments[j].createdAt).format('M/D/YY');
 				}
 			}
-			
+
 			// for (let j = 0; j < comments.length; j++) {
 			// 	if (comments[j].post.id === dadjokes[i].id) {
 			// 		dadjokes[i].comment[j] = comments.content
@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
 			// }
 		}
 
-		
+
 
 		if (req.session.loggedIn) {
 			for (let i = 0; i < dadjokes.length; i++) {
@@ -89,7 +89,7 @@ router.get('/', async (req, res) => {
 			}
 		}
 
-		
+
 		// console.log(dadjokes);
 		console.log(dadjokes)
 
@@ -145,7 +145,6 @@ router.get('/profile', withAuth, async (req, res) => {
 					as: 'saves',
 				},
 			],
-			// order: [['id', 'DESC']],
 		});
 		const userJokes = userJokeData.map((jokes) => jokes.toJSON());
 		for (let i = 0; i < userJokes.length; i++) {
@@ -154,49 +153,29 @@ router.get('/profile', withAuth, async (req, res) => {
 			userJokes[i].likecounter = likecount;
 		}
 
-		const userJokeDataForSaved = await Post.findAll({
+		const userSavedData = await User.findByPk(req.session.user.id, {
 			include: [
-				User,
 				{
-					model: User,
-					as: 'likes',
-					attribute: ['id'],
-				},
-				{
-					model: User,
-					as: 'saves',
+					association: 'saves',
+					include: [
+						User,
+						{
+							association: 'likes',
+						},
+					],
 				},
 			],
-			// order: [['id', 'DESC']],
 		});
 
-		const userSavedJokes = userJokeDataForSaved.map((jokes) => jokes.toJSON());
-		for (let i = 0; i < userSavedJokes.length; i++) {
-			for (let j = 0; j < userSavedJokes[i].saves.length; j++) {
-				if (userSavedJokes[i].saves[j].id === req.session.user.id) {
-					userSavedJokes[i].userSavedPost = true;
-				} else {
-					userSavedJokes[i].userSavedPost = false;
-				}
-			}
-		}
-		// console.log(userJokes)
-		console.log(userSavedJokes)
+		const userData = userSavedData.toJSON();
 
-		// console.log(userSavedJokes)
-		// // Check bookmarks
-		// for (let i = 0; i < dadjokes.length; i++) {
-		// 	for (let j = 0; j < dadjokes[i].saves.length; j++) {
-		// 		if (dadjokes[i].saves[j].id === req.session.user.id) {
-		// 			dadjokes[i].userBookmarkStatus = true;
-		// 		} else {
-		// 			dadjokes[i].userBookmarkStatus = false;
-		// 		}
-		// 	}
-		// }
+		for (let i = 0; i < userData.saves.length; i++) {
+			userData.saves[i].likecount = userSavedData.saves[i].likes.length;
+		}
+		
 		res.render('profile', {
 			userJokes,
-			userSavedJokes,
+			userData,
 			layout: "profilemain",
 			loggedIn: req.session.loggedIn
 		});

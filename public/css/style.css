@@ -306,10 +306,16 @@ main {
 .bookmark-btn,
 .comment-btn,
 .github-btn,
-.delete-btn
+.delete-btn,
+.comment-bubble
 {
 	background: none;
 	border: none;
+}
+
+#comments, #comment-form {
+	/* display:none !important; */
+	/* visibility: hidden; */
 }
 
 #joke-card-footer > div {
