@@ -382,13 +382,9 @@ main {
 }
 
 #comments, #comment-form {
-	animation: slide-up 500ms forwards;
+	animation: slide-up 500ms forward;
 }
 
-#comments[closing] {
-	animation: slide-down 500ms forwards;
-
-}
 
 @keyframes fade-in {
 	0% {

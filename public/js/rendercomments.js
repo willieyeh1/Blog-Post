@@ -12,22 +12,20 @@ const commentDisplay = (e) => {
     const commentbtn = e.target
     const parentComment = getParentNode(commentbtn, 7)
     const comment = parentComment.nextElementSibling
-    const commentForm = comment.nextElementSibling
 
-    if (comment.getAttribute('id') === 'comment-form' && comment.getAttribute('style') === 'color:aliceblue') {
-        comment.setAttribute('style', 'display: none !important')
-    } else if (comment.getAttribute('id') === 'comments' && comment.getAttribute('style') === 'color:aliceblue') {
-        comment.setAttribute('style', 'display: none !important')
-        commentForm.setAttribute('style', 'display: none !important')
-    } else if (comment.getAttribute('id') === 'comment-form' && comment.getAttribute('style') === 'display: none !important') {
+    // these console logs are for checking which html elements they are grabbing.
+    // console.log(parentComment)
+    // console.log('==================================')
+    // console.log(comment)
+    // console.log('==================================')
+    // console.log(comment.getAttribute('style'))
+
+    if (comment.getAttribute('style') === 'display: none !important') {
         comment.setAttribute('style', 'color:aliceblue')
-    } else if (comment.getAttribute('id') === 'comments' && comment.getAttribute('style') === 'display: none !important') {
-        comment.setAttribute('style', 'color:aliceblue')
-        commentForm.setAttribute('style', 'color:aliceblue')
+    } else if (comment.getAttribute('style') === 'color:aliceblue') {
+        comment.setAttribute('style','display: none !important')
     }
-
 }
-
 
 commentIcon.forEach((btn) => {
 	btn.addEventListener('click', commentDisplay);

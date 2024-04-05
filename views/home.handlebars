@@ -79,36 +79,39 @@
 
 
     {{!-- comment section --}}
-    {{#each dadjoke.comments as |comments|}}
-    <div class="container d-flex justify-content-end" post-id="{{id}}" id="comments" style="display: none !important">
-        <div class="container-comment-card">
-            <div class="row">
-                <div class="col-8 d-flex">
-                    {{comments.content}}</div>
-                <div class="col-4 text-end"> @{{comments.user.username}} on {{comments.createdAt}} </div>
+    <div class="comments-container" style="display: none !important">
+        {{#each dadjoke.comments as |comments|}}
+        <div class="container d-flex justify-content-end" post-id="{{id}}" id="comments">
+            <div class="container-comment-card">
+                <div class="row">
+                    <div class="col-8 d-flex">
+                        {{comments.content}}</div>
+                    <div class="col-4 text-end"> @{{comments.user.username}} on {{comments.createdAt}} </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        <div class="container d-flex justify-content-end" post-id="{{id}}" id="comment-form">
+            <div class="col-12 comment-group">
+                <form class="col-10 comment-form form-group" id="newJokeCard" post-id="{{id}}">
+                    <textarea id="jokecontent" class="punchlineinput" placeholder="Add Comment">
+            </textarea>
+                    <div class="col-2 text-center">
+                        <button class="comment-btn text-center" id="btn-comment"><i
+                                class="fa-regular fa-paper-plane"  ></i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    {{/each}}
-    <div class="container d-flex justify-content-end" post-id="{{id}}" id="comment-form" style="display: none !important">
-        <div class="col-12 comment-group">
-            <form class="col-10 comment-form form-group" id="newJokeCard">
-                <textarea id="jokecontent" class="punchlineinput" placeholder="Add Comment">
-        </textarea>
-                <div class="col-2 text-center">
-                    <button class="comment-btn text-center" id="btn-comment"><i
-                            class="fa-regular fa-paper-plane"></i></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    {{/each}}
+        {{/each}}
 </div>
 
 <script src='/js/likeunlike.js'></script>
 <script src='/js/bookmarks.js'></script>
 <script src="/js/punchlineButton.js"></script>
 <script src="/js/rendercomments.js"></script>
+<script src="js/addcomment.js"></script>
 
 {{!-- {{#if loggedIn}}
 <script src='/js/likeunlike.js'></script>
