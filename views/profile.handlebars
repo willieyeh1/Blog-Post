@@ -32,24 +32,24 @@
                 <h1>Saved</h1>
             </div>
             <div class="container-profile">
-                {{#each userSavedJokes as |usersavedjoke|}}
-                {{#if usersavedjoke.userSavedPost}}
+                {{#each userData.saves as |userdata|}}
+                {{!-- {{#if userdata.userSavedPost}} --}}
                 <div class="container-profile-card">
                     <div class="row">
                         <div class="col-12">{{content}} {{punchline}}</div>
                     </div>
                     <div class="row" id="row-count-likes">
                         <div class="col-3">
-                            {{likecounter}} likes
+                            {{likecount}} likes
                         </div>
                         <div class="col-9 text-end">
                             <button class="delete-btn text-white" id="remove-bookmark-btn">
-                                <i class="fa-solid fa-trash-can" post-id="{{usersavedjoke.id}}"></i>
+                                <i class="fa-solid fa-trash-can" post-id="{{userdata.id}}"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                {{/if}}
+                {{!-- {{/if}} --}}
                 {{/each}}
             </div>
         </div>
