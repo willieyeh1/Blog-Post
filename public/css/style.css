@@ -473,6 +473,7 @@ svg {
 	font-size: 1rem;
 	font-weight: 500;
 }
+
 @keyframes fade-in {
 	0% {
 		opacity: 0;

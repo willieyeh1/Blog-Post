@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 		headers: { Accept: 'application/json' },
 	})
 		.then(function (response) {
-			jotd = response.data
+			jotd = response.data;
 		})
 		.catch((error) => {
 			console.log(error);
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 				{
 					model: Comment,
 					include: [User],
-					attribute: ['date']
+					attribute: ['date'],
 				},
 			],
 			order: [['id', 'DESC']],
@@ -53,18 +53,18 @@ router.get('/', async (req, res) => {
 			dadjokes[i].likecounter = likecount;
 			if (dadjokes[i].comments.length > 0) {
 				for (let j = 0; j < dadjokes[i].comments.length; j++) {
-					dadjokes[i].comments[j].createdAt = dayjs(dadjokes[i].comments[j].createdAt).format('M/D/YY');
+					dadjokes[i].comments[j].createdAt = dayjs(
+						dadjokes[i].comments[j].createdAt
+					).format('M/D/YY');
 				}
 			}
 
 			// for (let j = 0; j < comments.length; j++) {
 			// 	if (comments[j].post.id === dadjokes[i].id) {
 			// 		dadjokes[i].comment[j] = comments.content
-			// 	}				
+			// 	}
 			// }
 		}
-
-
 
 		if (req.session.loggedIn) {
 			for (let i = 0; i < dadjokes.length; i++) {
@@ -89,16 +89,15 @@ router.get('/', async (req, res) => {
 			}
 		}
 
-
 		// console.log(dadjokes);
-		console.log(dadjokes)
+		console.log(dadjokes);
 
 		// console.log(jokeOftheDay)
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
 			jotd,
-			layout: 'main2'
+			layout: 'main2',
 		});
 	} catch (err) {
 		console.log(err);
@@ -172,18 +171,16 @@ router.get('/profile', withAuth, async (req, res) => {
 		for (let i = 0; i < userData.saves.length; i++) {
 			userData.saves[i].likecount = userSavedData.saves[i].likes.length;
 		}
-		
+
 		res.render('profile', {
 			userJokes,
 			userData,
-			layout: "profilemain",
-			loggedIn: req.session.loggedIn
+			layout: 'profilemain',
+			loggedIn: req.session.loggedIn,
 		});
-
-
 	} catch (err) {
-		console.log(err)
-		res.status(500).json({ msg: 'error occurred', err })
+		console.log(err);
+		res.status(500).json({ msg: 'error occurred', err });
 	}
 });
 
@@ -205,7 +202,7 @@ router.get('/profile/:id', withAuth, async (req, res) => {
 				{
 					model: Comment,
 					include: [User],
-					attribute: ['date']
+					attribute: ['date'],
 				},
 			],
 		});
@@ -216,7 +213,9 @@ router.get('/profile/:id', withAuth, async (req, res) => {
 			userJokes[i].likecounter = likecount;
 			if (userJokes[i].comments.length > 0) {
 				for (let j = 0; j < userJokes[i].comments.length; j++) {
-					userJokes[i].comments[j].createdAt = dayjs(userJokes[i].comments[j].createdAt).format('M/D/YY');
+					userJokes[i].comments[j].createdAt = dayjs(
+						userJokes[i].comments[j].createdAt
+					).format('M/D/YY');
 				}
 			}
 		}
@@ -244,27 +243,23 @@ router.get('/profile/:id', withAuth, async (req, res) => {
 			}
 		}
 
-		const userProfile = await User.findByPk(req.params.id)
-		const user = userProfile.toJSON()
+		const userProfile = await User.findByPk(req.params.id);
+		const user = userProfile.toJSON();
 
-		console.log(userJokes)
-		
+		console.log(userJokes);
 
 		res.render('userprofile', {
 			userJokes,
 			loggedIn: req.session.loggedIn,
-			user
-
+			user,
 		});
-
-
 	} catch (err) {
-		console.log(err)
-		res.status(500).json({ msg: 'error occurred', err })
+		console.log(err);
+		res.status(500).json({ msg: 'error occurred', err });
 	}
 });
 
-router.get('/changepass', (req, res) => {
+router.get('/changepass', async (req, res) => {
 	res.render('changepass');
 });
 
