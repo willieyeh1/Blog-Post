@@ -46,18 +46,20 @@
 					<div class='col-12 d-flex justify-content-between'>
 						<div id='authorname'><a
 								href='/profile/{{dadjoke.user.id}}'
+								data-joke-creator
 							>@{{dadjoke.user.username}}</a></div>
 						<div id='postdate'>{{createdAt}}</div>
 					</div>
 				</div>
 				<div>
-					<div class='col-12'>{{content}}</div>
+					<div class='col-12' data-joke-content>{{content}}</div>
 				</div>
 				<div class='row'>
 					<div
 						class='col-9'
 						id='hidePunch'
 						style='visibility: hidden'
+						data-joke-punchline
 					>{{punchline}}</div>
 					<div class='col-3'><button class='show-punchline'>Show Punchline</button>
 					</div>
@@ -200,7 +202,6 @@
 
 <script src='/js/likeunlike.js'></script>
 <script src='/js/bookmarks.js'></script>
-<script src='/js/likeunlike.js'></script>
 <script src='/js/punchlineButton.js'></script>
 <script src='/js/rendercomments.js'></script>
 <script src='js/addcomment.js'></script>

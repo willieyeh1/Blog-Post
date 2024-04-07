@@ -23,12 +23,9 @@
 	align-items: center;
 }
 
-/* .navbar-nav a,
-.navbar-nav button {
-	padding: 1rem;
-	color: white;
-	font-size: 1.7rem;
-} */
+.hide {
+	display: none;
+}
 
 #navlinks a,
 #navlinks button {
