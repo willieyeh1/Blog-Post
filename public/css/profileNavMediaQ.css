@@ -1,0 +1,21 @@
+@media screen and (max-width: 1090px) {
+
+    #navlinks a,
+    #navlinks button {
+        padding-right: 1rem;
+        color: white;
+        font-size: 1.4rem;
+    }
+
+    #search-bar {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    #search-bar {
+        margin-left: 2rem;
+    }
+
+}
