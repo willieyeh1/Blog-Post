@@ -97,8 +97,7 @@ router.get('/', async (req, res) => {
 		res.render('home', {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
-			jotd,
-			layout: 'main2'
+			jotd
 		});
 	} catch (err) {
 		console.log(err);

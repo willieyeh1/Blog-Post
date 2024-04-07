@@ -20,36 +20,41 @@
 <body>
 
 	<header class='headers'>
-		<nav class='navbar navbar-expand-lg' id='navs'>
-			<div class='container-fluid'>
-				<div class='navbar-brand'>
-					<a href="/">
-						<img src='/images/logo.png' width='288px' height='100px' alt='logo of the DJ R Us' />
-
-					</a>
-				</div>
-				<button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav'
-					aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation' id='hamburgers'>
-					<span class='navbar-toggler-icon'></span>
+		<nav class="navbar navbar-expand-lg">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src='/images/logo.png' width='288px' height='100px' alt='logo of the DJ R Us' />
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class='nav collapse navbar-collapse' id='navbarNav'>
-					<ul class='navbar-nav' id='navbarlinks'>
-						<li class='nav-item'>
-							<a class='nav-link' href='/addjoke'>Add Joke</a>
-						</li>
-						<li class='nav-item'>
-							<a class='nav-link' href='/profile'>Profile</a>
-						</li>
-						{{#if loggedIn}}
-						<li class='nav-item'>
-							<button class='nav-link' id='logout-btn'>Logout</button>
-						</li>
-						{{else}}
-						<li class='nav-item'>
-							<a class='nav-link' href='/login'>Login</a>
-						</li>
-						{{/if}}
-					</ul>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="d-flex ms-auto navlinks-container">
+						<form class="d-flex" role="search" id="search-bar">
+							<input class="form-control me-2" type="search" placeholder="Search jokes" aria-label="Search">
+							<button class="btn text-white" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+						</form>
+						<ul class="navbar-nav mb-2 mb-lg-0" id="navlinks">
+							<li class="nav-item">
+								<a class="nav-link" href="/addjoke">Add Joke</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/profile">Profile</a>
+							</li>
+							{{#if loggedIn}}
+							<li class='nav-item'>
+								<button class='nav-link' id='logout-btn'>Logout</button>
+							</li>
+							{{else}}
+							<li class='nav-item'>
+								<a class='nav-link' href='/login'>Login</a>
+							</li>
+							{{/if}}
+						</ul>
+					</div>
+
 				</div>
 			</div>
 		</nav>
@@ -68,7 +73,8 @@
 				&copy; 2024 DJ R Us
 			</div>
 			<div id='footer-content'>
-				<button class="github-btn" id="btn-github"><a class="github" href="https://github.com/ericeya/DJ-R-Us"><i class="fa-brands fa-github"></i></a></button>
+				<button class="github-btn" id="btn-github"><a class="github"
+						href="https://github.com/ericeya/DJ-R-Us"><i class="fa-brands fa-github"></i></a></button>
 			</div>
 
 		</div>
