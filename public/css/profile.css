@@ -1,0 +1,40 @@
+@media screen and (max-width: 1200px) {
+    .col-2 {
+        margin-left: 0.1rem;
+        margin-top: 0.7rem;
+        display: flex;
+        flex: column;
+
+    }
+
+    .col-10{
+        width: 170%
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .col-2 {
+        margin-left: 0.1rem;
+        margin-top: 0.7rem;
+        display: flex;
+        flex: column;
+
+    }
+
+    .col-10{
+        width: 170%
+
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    .col-2 {
+        margin-left: 0.1rem;
+        margin-top: 0.7rem;
+        display: flex;
+        flex: column;
+    }
+
+}
