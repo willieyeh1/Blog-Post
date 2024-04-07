@@ -1,3 +1,16 @@
+@media only screen and (max-width: 450px) {
+
+	.footer-container {
+		width: 90vw;
+		margin-top: 15px;
+        font-size: small;
+    	}
+
+	#footer-content {
+		align-items: baseline;
+	}
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
