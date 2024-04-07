@@ -1,5 +1,77 @@
 <link rel="stylesheet" href="/css/changepassMediaQ.css">
 
+<div class='position-fixed top-0 start-50 translate-middle-x p-3 password-toast' style='z-index: 11'>
+	<div
+		id='liveToast'
+		class='toast hide z-3 pass-match-toast w-100'
+		role='alert'
+		aria-live='assertive'
+		aria-atomic='true'
+	>
+		<div class='toast-header bg-background-white'>
+			<strong class='me-auto text-danger error-msg'>Error!</strong>
+		</div>
+		<div class='toast-body bg-background-white'>
+			<div class='login-msg'>Passwords do not match. Please ensure that your new password and confirm new password fields contain the same value.</div>
+			<div class='mt-2 pt-2'>
+				<button
+					type='button'
+					class='btn btn-secondary btn-sm'
+					data-bs-dismiss='toast'
+				>Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class='position-fixed  top-0 start-50 translate-middle-x p-3' style='z-index: 11'>
+	<div
+		id='liveToast'
+		class='toast hide z-3 userpass-error-toast w-100'
+		role='alert'
+		aria-live='assertive'
+		aria-atomic='true'
+	>
+		<div class='toast-header bg-background-white'>
+			<strong class='me-auto text-danger error-msg'>Error!</strong>
+		</div>
+		<div class='toast-body bg-background-white'>
+			<div class='login-msg'>Failed to update password! Username or old password was entered incorrectly!</div>
+			<div class='mt-2 pt-2'>
+				<button
+					type='button'
+					class='btn btn-secondary btn-sm'
+					data-bs-dismiss='toast'
+				>Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class='position-fixed  top-0 start-50 translate-middle-x p-3' style='z-index: 11'>
+	<div
+		id='liveToast'
+		class='toast hide z-3 input-error-toast w-100'
+		role='alert'
+		aria-live='assertive'
+		aria-atomic='true'
+	>
+		<div class='toast-header bg-background-white'>
+			<strong class='me-auto text-danger error-msg'>Error!</strong>
+		</div>
+		<div class='toast-body bg-background-white'>
+			<div class='login-msg'>Please enter something in all input fields!</div>
+			<div class='mt-2 pt-2'>
+				<button
+					type='button'
+					class='btn btn-secondary btn-sm'
+					data-bs-dismiss='toast'
+				>Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container d-flex justify-content-center">
     {{!-- <div>
         <div class="containers"> --}}
@@ -21,6 +93,9 @@
                     <label for="passwordInput">New Password:</label>
                     <input type="password" id="newPasswordInput" name="passwordInput" placeholder="SherlockHomie123">
 
+                    <label for="passwordInput">Confirm New Password:</label>
+                    <input type="password" id="confNewPasswordInput" name="confPasswordInput">
+
                     <div class="form-group" id="submits">
                         <input id="login-btn" type="submit" value="Change Password">
                     </div>
@@ -28,5 +103,5 @@
                
 
 
-        <script src="/js/login.js"></script>
+        {{!-- <script src="/js/login.js"></script> --}}
         <script src="/js/changepassword.js"></script>

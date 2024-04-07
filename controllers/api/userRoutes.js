@@ -120,28 +120,19 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.put('/changepassword', async (req, res) => {
-	if (!req.session.user) {
-		return res.status(403).json({ msg: 'login first!' });
-	}
 	const username = req.body.username;
 	const oldPassword = req.body.oldPassword;
 
-	if (username === req.session.user.username) {
-		// Find user
-		const foundUser = await User.findByPk(req.session.user.id);
-		// Check if passwords match
+	const foundUser = await User.findOne({ where: { username: username } });
+	if (foundUser) {
 		const validPassword = await foundUser.checkPassword(oldPassword);
-
 		if (!validPassword) {
-			return res
-				.status(403)
-				.json({ msg: `Incorrect Password! Valid password: ${validPassword}` });
+			return res.status(403).json({ msg: `Incorrect Password!` });
 		}
-
 		await foundUser.update({ password: req.body.newPassword });
 		res.status(200).json({ msg: 'Password updated!' });
 	} else {
-		return res.status(403).json({ msg: 'Incorrect Username!' });
+		res.status(500).json('User not found');
 	}
 });
 
