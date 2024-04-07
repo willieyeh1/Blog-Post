@@ -21,44 +21,61 @@
 <body>
 
     <header class="headers">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary-salmon" id="navs">
-            <div class="navs container-fluid" id="margin">
-                <div class="navbar-brand">
-                    <a href="/">
-                        <img src='/images/logo.png' width='288px' height='100px' alt='logo of the DJ R Us' />
-                    </a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="nav collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav" id="navbarlinks">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/profile">Profile</a>
-                        </li>
-                        {{#if loggedIn}}
-                        <li class="nav-item">
-                            <button class="nav-link" id="logout-btn">Logout</button>
-                        </li>
-                        {{else}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                        {{/if}}
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <nav class="navbar navbar-expand-lg">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/" id="homepage">
+					<img src='/images/logo.png' width='288px' height='100px' alt='logo of the DJ R Us' />
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="d-flex ms-auto navlinks-container">
+						<ul class="navbar-nav mb-2 mb-lg-0" id="navlinks">
+							<li class="nav-item">
+								<a class="nav-link" href="/">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/profile">Profile</a>
+							</li>
+							{{#if loggedIn}}
+							<li class='nav-item'>
+								<button class='nav-link' id='logout-btn'>Logout</button>
+							</li>
+							{{else}}
+							<li class='nav-item'>
+								<a class='nav-link' href='/login'>Login</a>
+							</li>
+							{{/if}}
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
     </header>
 
     <main>
         {{{body}}}
     </main>
 
+    <footer id='footer'>
+        <div class='footer-container'>
+            <div id='footer-content'>
+                Made by Eric, Willie, Kyle, Jordan
+            </div>
+            <div id='footer-content'>
+                &copy; 2024 DJ R Us
+            </div>
+            <div id='footer-content'>
+                <button class='github-btn' id='btn-github'><a class='github'
+                        href='https://github.com/ericeya/DJ-R-Us'><i class='fa-brands fa-github'></i></a></button>
+            </div>
+
+        </div>
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

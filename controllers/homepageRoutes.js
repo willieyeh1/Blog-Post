@@ -97,7 +97,6 @@ router.get('/', async (req, res) => {
 			dadjokes,
 			loggedIn: req.session.loggedIn,
 			jotd,
-			layout: 'main2',
 		});
 	} catch (err) {
 		console.log(err);
