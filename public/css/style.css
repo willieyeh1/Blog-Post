@@ -449,15 +449,24 @@ main {
 }
 
 .container-movetop-btn {
-	position: fixed;
-	bottom: 13%;
-	right: 10%;
+	/* position: relative; */
+	float: right;
+	margin: 0 7rem 2rem 0;
 }
 
 #back-to-top {
+	display: flex;
 	background-color: #b06bad;
+	height: 50px;
+	width: 50px;
 	border: none;
-	color: white;
+	border-radius: 50%;
+	justify-content: center;
+}
+
+svg {
+	height: 30px;
+	width: 30px;
 }
 
 #back-to-top a {
