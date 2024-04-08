@@ -1,28 +1,29 @@
-const commentForm = document.querySelectorAll('#newJokeCard')
+const commentForm = document.querySelectorAll('#newJokeCard');
 
 const addComment = async (e) => {
-    e.preventDefault()
+	e.preventDefault();
+	const postId = parseInt(e.target.getAttribute('post-id'));
+	const content = document
+		.querySelector(`#jokecontent[post-id="${postId}"]`)
+		.value.trim();
 
-    const content = document.querySelector('#jokecontent').value.trim();
-    const postId = parseInt(e.target.getAttribute('post-id'))
-    console.log(typeof postId)
-    console.log(e.target)
+	// console.log(typeof postId);
+	// console.log(content);
 
+	if (content) {
+		const response = await fetch('/api/comment/', {
+			method: 'POST',
+			body: JSON.stringify({ content, postId }),
+			headers: { 'Content-Type': 'application/json' },
+		});
 
-    if (content) {
-      const response = await fetch('/api/comment/', {
-        method: 'POST',
-        body: JSON.stringify({ content, postId}),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to create an account.');
-      }
-    }
-}
+		if (response.ok) {
+			document.location.replace('/');
+		} else {
+			alert('Failed to create an account.');
+		}
+	}
+};
 
 commentForm.forEach(function (button) {
 	button.addEventListener('submit', addComment);

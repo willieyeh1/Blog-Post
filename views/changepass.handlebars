@@ -1,6 +1,9 @@
-<link rel="stylesheet" href="/css/changepassMediaQ.css">
+<link rel='stylesheet' href='/css/changepassMediaQ.css' />
 
-<div class='position-fixed top-0 start-50 translate-middle-x p-3 password-toast' style='z-index: 11'>
+<div
+	class='position-fixed top-0 start-50 translate-middle-x p-3 password-toast'
+	style='z-index: 11'
+>
 	<div
 		id='liveToast'
 		class='toast hide z-3 pass-match-toast w-100'
@@ -12,7 +15,8 @@
 			<strong class='me-auto text-danger error-msg'>Error!</strong>
 		</div>
 		<div class='toast-body bg-background-white'>
-			<div class='login-msg'>Passwords do not match. Please ensure that your new password and confirm new password fields contain the same value.</div>
+			<div class='login-msg'>Passwords do not match. Please ensure that your new
+				password and confirm new password fields contain the same value.</div>
 			<div class='mt-2 pt-2'>
 				<button
 					type='button'
@@ -24,7 +28,10 @@
 	</div>
 </div>
 
-<div class='position-fixed  top-0 start-50 translate-middle-x p-3' style='z-index: 11'>
+<div
+	class='position-fixed top-0 start-50 translate-middle-x p-3'
+	style='z-index: 11'
+>
 	<div
 		id='liveToast'
 		class='toast hide z-3 userpass-error-toast w-100'
@@ -36,7 +43,8 @@
 			<strong class='me-auto text-danger error-msg'>Error!</strong>
 		</div>
 		<div class='toast-body bg-background-white'>
-			<div class='login-msg'>Failed to update password! Username or old password was entered incorrectly!</div>
+			<div class='login-msg'>Failed to update password! Username or old password
+				was entered incorrectly!</div>
 			<div class='mt-2 pt-2'>
 				<button
 					type='button'
@@ -48,7 +56,10 @@
 	</div>
 </div>
 
-<div class='position-fixed  top-0 start-50 translate-middle-x p-3' style='z-index: 11'>
+<div
+	class='position-fixed top-0 start-50 translate-middle-x p-3'
+	style='z-index: 11'
+>
 	<div
 		id='liveToast'
 		class='toast hide z-3 input-error-toast w-100'
@@ -72,36 +83,51 @@
 	</div>
 </div>
 
-<div class="container d-flex justify-content-center">
-    {{!-- <div>
-        <div class="containers"> --}}
-            <div id="login-container">
+<div class='container d-flex justify-content-center'>
+	{{! <div>
+        <div class="containers"> }}
+	<div id='login-container'>
 
-                <h1 id="login-title">Change Password</h1>
-                <form class="login-form form-group" id="change-pass-form">
-                    {{!-- <div class="form-group"> --}}
-                        <label for="usernameInput">Username:</label>
-                        <input type="text" id="usernameInput" placeholder="PunPaladin">
-                        {{!--
+		<h1 id='login-title'>Change Password</h1>
+		<form class='login-form form-group' id='change-pass-form'>
+			{{! <div class="form-group"> }}
+			<label for='usernameInput'>Username:</label>
+			<input type='text' id='usernameInput' placeholder='PunPaladin' />
+			{{!
                     </div>
-                    <div class="form-group"> --}}
-                        <label for="passwordInput"> Original Password:</label>
-                        <input type="password" id="passwordInput" name="passwordInput" placeholder="Punstoppable!">
-                        {{!--
-                    </div> --}}
+                    <div class="form-group"> }}
+			<label for='passwordInput'> Original Password:</label>
+			<input
+				type='password'
+				id='passwordInput'
+				name='passwordInput'
+				placeholder='Punstoppable!'
+			/>
+			{{!
+                    </div> }}
 
-                    <label for="passwordInput">New Password:</label>
-                    <input type="password" id="newPasswordInput" name="passwordInput" placeholder="SherlockHomie123">
+			<label for='passwordInput'>New Password:</label>
+			<input
+				type='password'
+				id='newPasswordInput'
+				name='passwordInput'
+				placeholder='SherlockHomie123'
+			/>
 
-                    <label for="passwordInput">Confirm New Password:</label>
-                    <input type="password" id="confNewPasswordInput" name="confPasswordInput">
+			<label for='passwordInput'>Confirm New Password:</label>
+			<input
+				type='password'
+				id='confNewPasswordInput'
+				name='confPasswordInput'
+			/>
 
-                    <div class="form-group" id="submits">
-                        <input id="login-btn" type="submit" value="Change Password">
-                    </div>
-                </form>
-               
+			<div class='form-group' id='submits'>
+				<input id='login-btn' type='submit' value='Change Password' />
+			</div>
+		</form>
+	</div>
 
+</div>
 
-        {{!-- <script src="/js/login.js"></script> --}}
-        <script src="/js/changepassword.js"></script>
+{{! <script src="/js/login.js"></script> }}
+<script src='/js/changepassword.js'></script>
