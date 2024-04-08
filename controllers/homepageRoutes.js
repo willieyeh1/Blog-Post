@@ -50,16 +50,11 @@ router.get('/', async (req, res) => {
 				},
 				{
 					model: Comment,
-					include: [User],
-					attribute: ['date'],
+					include: [User]
 				},
 			],
-			order: [['id', 'DESC']],
+			order: [['id', 'DESC'], [Comment, 'updatedAt', 'ASC']],
 		});
-		// const commentData = await Comment.findAll({
-		// 	include: [Post, User]
-		// });
-		// const comments = commentData.map((comment) => comment.toJSON())
 
 		const dadjokes = dadjokeData.map((jokes) => jokes.toJSON());
 		for (let i = 0; i < dadjokes.length; i++) {
@@ -73,12 +68,7 @@ router.get('/', async (req, res) => {
 					).format('M/D/YY');
 				}
 			}
-
-			// for (let j = 0; j < comments.length; j++) {
-			// 	if (comments[j].post.id === dadjokes[i].id) {
-			// 		dadjokes[i].comment[j] = comments.content
-			// 	}
-			// }
+			
 		}
 
 		if (req.session.loggedIn) {
@@ -105,7 +95,7 @@ router.get('/', async (req, res) => {
 		}
 
 		// console.log(dadjokes);
-		console.log(dadjokes);
+		console.log(dadjokes[0].comments);
 
 		// console.log(jokeOftheDay)
 		res.render('home', {
