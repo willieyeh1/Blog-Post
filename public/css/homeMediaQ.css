@@ -1,12 +1,5 @@
 @media only screen and (max-width: 540px) {
 
-	.like-container, .comment-container{
-		width: 15%;
-	}
-	.bookmark-container{
-		width: 70%;
-		/* float:right; */
-	}
     .punchline-container {
 		width: calc(100% - 20px);
         text-align: left;
@@ -61,7 +54,25 @@
 } */
 
 
-/* Medium devices (landscape tablets, 768px and up) */
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+	.like-container, .comment-container{
+		width: 10%;
+	}
+	.bookmark-container{
+		width: 80%;
+		/* float:right; */
+	}
+	/* .container-movetop-btn{
+		right: 0.5%
+	} */
+
+    /* #comment-button {
+        margin-left: 25px;
+    } */
+}
 @media only screen and (max-width: 768px) {
 	/* .container-movetop-btn{
 		right: 0%;
@@ -71,7 +82,13 @@
     /* #comment-button {
         margin-left: 25px;
     } */
-
+	.like-container, .comment-container{
+		width: 15%;
+	}
+	.bookmark-container{
+		width: 70%;
+		/* float:right; */
+	}
     .show-punchline {
 		width: auto;
         text-align: left;
@@ -81,17 +98,6 @@
 	}
 
 }
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 992px) {
-	/* .container-movetop-btn{
-		right: 0.5%
-	} */
-
-    /* #comment-button {
-        margin-left: 25px;
-    } */
-}
-
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 /* @media only screen and (min-width: 1200px) {
 	.container-movetop-btn{
