@@ -7,7 +7,7 @@ const axios = require('axios');
 const schedule = require('node-schedule');
 
 let jotd;
-schedule.scheduleJob('*0 * * * *', async () => {
+schedule.scheduleJob('0 * * * *', async () => {
 	await axios({
 		method: 'get',
 		url: 'https://icanhazdadjoke.com/',
@@ -23,18 +23,6 @@ schedule.scheduleJob('*0 * * * *', async () => {
 
 // Get method
 router.get('/', async (req, res) => {
-	// const jokeOftheDay = await axios({
-	// 	method: 'get',
-	// 	url: 'https://icanhazdadjoke.com/',
-	// 	headers: { Accept: 'application/json' },
-	// })
-	// 	.then(function (response) {
-	// 		jotd = response.data;
-	// 	})
-	// 	.catch((error) => {
-	// 		console.log(error);
-	// 	});
-
 	try {
 		const dadjokeData = await Post.findAll({
 			include: [
@@ -50,10 +38,13 @@ router.get('/', async (req, res) => {
 				},
 				{
 					model: Comment,
-					include: [User]
+					include: [User],
 				},
 			],
-			order: [['id', 'DESC'], [Comment, 'updatedAt', 'ASC']],
+			order: [
+				['id', 'DESC'],
+				[Comment, 'updatedAt', 'ASC'],
+			],
 		});
 
 		const dadjokes = dadjokeData.map((jokes) => jokes.toJSON());
@@ -68,7 +59,6 @@ router.get('/', async (req, res) => {
 					).format('M/D/YY');
 				}
 			}
-			
 		}
 
 		if (req.session.loggedIn) {
