@@ -594,3 +594,24 @@ svg {
 	}
 
 }
+
+@media screen and (max-width: 1200px) {
+    #footer-content{
+        text-align: center
+    }
+    }
+
+
+@media screen and (max-width: 768px) {
+    #footer-content{
+        text-align: center
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    #footer-content{
+        text-align: center
+    }
+
+}
