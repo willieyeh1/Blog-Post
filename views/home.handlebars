@@ -63,13 +63,13 @@
 						style='visibility: hidden'
 						data-joke-punchline
 					>{{punchline}}</div>
-					<div class='col-3'><button class='show-punchline'>Show Punchline</button>
+					<div class='col-3 punchline-container' ><button class='show-punchline'>Show Punchline</button>
 					</div>
 				</div>
 				<div id='joke-card-footer'>
 					<div>
 						<div class='row' id='joke-card-footer2'>
-							<div class='col-1'>
+							<div class='col-1 like-container'>
 								<button class='post-btns'>
 									{{#if userLikeStatus}}
 										<i
@@ -88,7 +88,7 @@
 									{{/if}}
 								</button>
 							</div>
-							<div class='col-1'>
+							<div class='col-1 comment-container'>
 								<button class='comment-bubble'>
 									<i
 										class='fa-regular fa-comment'
@@ -97,7 +97,7 @@
 									></i>
 								</button>
 							</div>
-							<div class='col-10 text-end'>
+							<div class='col-10 text-end bookmark-container'>
 								<button class='bookmark-btn'>
 									{{#if userBookmarkStatus}}
 										<i
@@ -138,9 +138,9 @@
 				>
 					<div class='container-comment-card'>
 						<div class='row'>
-							<div class='col-8 d-flex'>
+							<div class='col-lg-8 col-12 d-flex'>
 								{{comments.content}}</div>
-							<div class='col-4 text-end'>
+							<div class='col-lg-4 col-12 text-end comment-author'>
 								@{{comments.user.username}}
 								on
 								{{comments.createdAt}}
@@ -207,7 +207,7 @@
 <script src='/js/bookmarks.js'></script>
 <script src='/js/punchlineButton.js'></script>
 <script src='/js/rendercomments.js'></script>
-<script src='js/addcomment.js'></script>
+<script src='/js/addcomment.js'></script>
 
 {{!-- {{#if loggedIn}}
 <script src='/js/likeunlike.js'></script>
