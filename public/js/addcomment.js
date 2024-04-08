@@ -1,4 +1,10 @@
 const commentForm = document.querySelectorAll('#newJokeCard');
+const commentErrorEl = document.querySelector('.toast');
+
+function showToast() {
+	const toast = new bootstrap.Toast(commentErrorEl);
+	toast.show();
+}
 
 const addComment = async (e) => {
 	e.preventDefault();
@@ -20,7 +26,7 @@ const addComment = async (e) => {
 		if (response.ok) {
 			document.location.replace('/');
 		} else {
-			alert('Failed to create an account.');
+			showToast();
 		}
 	}
 };
