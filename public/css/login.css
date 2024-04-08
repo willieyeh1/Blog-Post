@@ -1,0 +1,20 @@
+@media screen and (max-width: 1200px) {
+    #login-container{
+        width:70%
+    }
+    }
+
+
+@media screen and (max-width: 768px) {
+    #login-container{
+        width:90%
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    #login-container{
+        width:80%
+    }
+
+}
