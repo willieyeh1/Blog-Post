@@ -537,6 +537,20 @@ svg {
     }
 }
 
+@media only screen and (max-width: 540px) {
+
+	.footer-container {
+		width: 90vw;
+		margin-top: 15px;
+        font-size: small;
+    	}
+
+	#footer-content {
+        padding: 20px;
+		align-items: baseline;
+	}
+}
+
 @media screen and (max-width: 1000px) {
     .yoursaves {
         flex-direction: column;
@@ -578,6 +592,17 @@ svg {
     .navbar-nav button {
         padding-bottom: 0
     }
+
+	.footer-container {
+		width: 90vw;
+		margin-top: 15px;
+        font-size: small;
+    	}
+
+	#footer-content {
+        padding: 20px;
+		align-items: baseline;
+	}
 
 }
 
