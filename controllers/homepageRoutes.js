@@ -4,11 +4,11 @@ const withAuth = require('../utils/auth');
 const { Comment, Post, User } = require('../models');
 const dayjs = require('dayjs');
 const axios = require('axios');
+const schedule = require('node-schedule');
 
-// Get method
-router.get('/', async (req, res) => {
-	let jotd;
-	const jokeOftheDay = await axios({
+let jotd;
+schedule.scheduleJob('*0 * * * *', async () => {
+	await axios({
 		method: 'get',
 		url: 'https://icanhazdadjoke.com/',
 		headers: { Accept: 'application/json' },
@@ -19,6 +19,21 @@ router.get('/', async (req, res) => {
 		.catch((error) => {
 			console.log(error);
 		});
+});
+
+// Get method
+router.get('/', async (req, res) => {
+	// const jokeOftheDay = await axios({
+	// 	method: 'get',
+	// 	url: 'https://icanhazdadjoke.com/',
+	// 	headers: { Accept: 'application/json' },
+	// })
+	// 	.then(function (response) {
+	// 		jotd = response.data;
+	// 	})
+	// 	.catch((error) => {
+	// 		console.log(error);
+	// 	});
 
 	try {
 		const dadjokeData = await Post.findAll({
