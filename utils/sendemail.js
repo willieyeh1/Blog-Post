@@ -19,8 +19,8 @@ const nodemailer = require('nodemailer')
         port: 465,
         secure: true,
         auth: {
-            user: "dadjokesrus01@gmail.com",
-            pass: 'vnoi phyi gdcs unph'
+            user: process.env.DB_EMAIL_USER,
+            pass: process.env.DB_EMAIL_PASSWORD
         }
     })
 
