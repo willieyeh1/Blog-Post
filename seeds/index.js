@@ -32,7 +32,7 @@ const postSeeds = [
     userId: 1
   },
   {
-    content: "I wondered why the frisbee kept getting bigger and bigger. Then it hit me.",
+    content: "I wondered why the frisbee kept getting bigger and bigger.",
     punchline: "Then it hit me.",
     userId: 2
   },
