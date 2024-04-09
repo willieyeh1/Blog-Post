@@ -7,7 +7,7 @@ const axios = require('axios');
 const schedule = require('node-schedule');
 
 let jotd;
-schedule.scheduleJob('0 * * * *', async () => {
+schedule.scheduleJob('* * * * *', async () => {
 	await axios({
 		method: 'get',
 		url: 'https://icanhazdadjoke.com/',
