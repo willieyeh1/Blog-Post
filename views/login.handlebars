@@ -7,6 +7,33 @@
     <input type="submit" id="login-btn" value="Log In">
 </form> --}}
 <link rel='stylesheet' href='/css/login.css'/>
+<div
+	class='position-fixed top-0 start-50 translate-middle-x p-3'
+	style='z-index: 11'
+>
+	<div
+		id='liveToast'
+		class='toast hide z-3 login-error-toast w-100'
+		role='alert'
+		aria-live='assertive'
+		aria-atomic='true'
+	>
+		<div class='toast-header bg-background-white'>
+			<strong class='me-auto text-danger error-msg'>Error!</strong>
+		</div>
+		<div class='toast-body bg-background-white'>
+			<div class='login-msg'>Failed to login! Username or password
+				was entered incorrectly!</div>
+			<div class='mt-2 pt-2'>
+				<button
+					type='button'
+					class='btn btn-secondary btn-sm'
+					data-bs-dismiss='toast'
+				>Close</button>
+			</div>
+		</div>
+	</div>
+</div>
  <div class="container d-flex justify-content-center">
         {{!-- <div>
             <div class="containers"> --}}
