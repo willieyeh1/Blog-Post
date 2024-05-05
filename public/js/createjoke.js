@@ -2,16 +2,16 @@ const createJoke = async (event) => {
 	event.preventDefault();
 
 	const setup = document.querySelector('#setupcontent').value.trim();
-	const punchline = document.querySelector('#jokecontent').value.trim();
+	const punchline = "I love my son";
 
 	if (setup.length === 0) {
-		alert('The joke setup cannot be empty!');
+		alert('The blog cannot be empty!');
 		return;
 	}
-	if (punchline.length === 0) {
-		alert('The joke punchline cannot be empty!');
-		return;
-	}
+	// if (punchline.length === 0) {
+	// 	alert('The joke punchline cannot be empty!');
+	// 	return;
+	// }
 
 	if (setup && punchline) {
 		const response = await fetch('/api/post/', {
